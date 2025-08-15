@@ -4,6 +4,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header ("Input Manager")]
     [Header("Movement")]
     [SerializeField] Transform _cameraFPS;
     [SerializeField, Range(0, 15f)] float _mouseSensitivity;
@@ -25,10 +26,12 @@ public class PlayerMovement : MonoBehaviour
     void LateUpdate()
     {
         getMouseMovement();
+        useRacast();
     }
 
     public void getMouseMovement()
     {
+
         if (Mouse.current != null)
         {
             Vector2 mouseDelta = Mouse.current.delta.ReadValue() * _mouseSensitivity * Time.deltaTime;
@@ -42,5 +45,36 @@ public class PlayerMovement : MonoBehaviour
             //lerp
             _cameraFPS.localRotation = Quaternion.Slerp(_cameraFPS.localRotation, targetRotation, _mouseLerpSpeed);
         }
+    }
+
+    public void useRacast()
+    {
+        //use Raycast to hit an interactable gameObject
+        Debug.DrawRay(transform.position, transform.forward * 5f, Color.red);
+        // Get current mouse position
+        Vector2 mousePos = Mouse.current.position.ReadValue();
+
+        // Create ray from camera to that position
+        Ray ray = Camera.main.ScreenPointToRay(mousePos);
+
+        // Declare a RaycastHit variable to store hit information
+        RaycastHit hit;
+
+        if (Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            Debug.Log("E key pressed!");
+
+            // Perform the raycast
+            if (Physics.Raycast(ray, out hit))
+            {
+                // If the raycast hits something, 'hit' now contains the collision data
+                Debug.Log("Hit " + hit.collider.name + " at point " + hit.point);
+
+                // You can then access various properties of the hit object
+                // Example: Change the color of the hit object
+                hit.collider.GetComponent<IInteractable>()?.interact();
+            }
+        }
+
     }
 }

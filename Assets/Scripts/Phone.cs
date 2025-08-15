@@ -1,0 +1,13 @@
+using UnityEngine;
+
+public class Phone : MonoBehaviour, IInteractable
+{
+    
+    public void interact()
+    {
+        //what happens when the player interacts with phone (from phones perspective)
+        //play animation to players face
+        Debug.Log("Phone is Interacted");
+    }
+
+}
