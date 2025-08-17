@@ -77,4 +77,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
+
+    public void ResetRotation(Transform cameraTransform)
+    {
+        _rotationY = cameraTransform.eulerAngles.y;
+        _rotationX = cameraTransform.eulerAngles.x;
+    }
 }
