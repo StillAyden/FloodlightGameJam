@@ -1,24 +1,24 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Phone_Button : MonoBehaviour, IInteractable
 {
 
     [SerializeField] ManagerSwitchInteractions _switchInteractions;
-    private Phone _phoneScript;
-    private bool _interacted;
+    //private Phone _phoneScript;
 
-    private void OnEnable()
-    {
-        _interacted = false;
+    //private void Start()
+    //{
+    //    _phoneScript = GameObject.Find("Phone_collider").GetComponent<Phone>();
+    //}
 
-    }
-    private void Start()
-    {
-        _switchInteractions = GameObject.Find("ManagerSwitchInteractions").GetComponent<ManagerSwitchInteractions>();
-        _phoneScript = GameObject.Find("Phone_collider").GetComponent<Phone>();
-    }
-
-    
+    //private void Update()
+    //{
+    //    if (Mouse.current.rightButton.wasPressedThisFrame) // Right click pressed
+    //    {
+    //        _phoneScript.enabled = true;
+    //    }
+    //}
     public void interact()
     {
         // Use the GameObject's name to determine which button was pressed
@@ -70,26 +70,9 @@ public class Phone_Button : MonoBehaviour, IInteractable
             case "Button_Hash":
                 Debug.Log("Button_Hash pressed!");
                 break;
-            case "Button_ExitPhone":
-                Debug.Log("Button_ExitPhone pressed!");
-                exitPhone();
+            case "Button_PassCall":
+                Debug.Log("Button_PassCall pressed!");
                 break;
         }
-    }
-
-   
-
-    public void exitPhone()
-    {
-
-        if (_interacted == false)
-        {
-            _interacted = true;
-            _switchInteractions.InteractionToCharacter();
-            //this.GetComponent<Collider>().enabled = false;
-            _phoneScript.enabled = true;
-            Debug.Log("Exit Button is Interacted");
-        }
-
     }
 }

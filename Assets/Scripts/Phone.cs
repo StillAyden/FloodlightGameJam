@@ -35,7 +35,6 @@ public class Phone : MonoBehaviour, IInteractable
         {
             _switchInteractions._playerMainCamera.transform.SetParent(this.transform);
             _interacted = true;
-            _switchInteractions._playerMovement.enabled = false;
             this.GetComponent<Collider>().enabled = false;
             _buttons.SetActive(true);
             _receiver.SetActive(true);

@@ -75,6 +75,7 @@ public class ManagerSwitchInteractions : MonoBehaviour
 
     public void characterToInteraction(Vector3 _targetPosition, Quaternion _targetRotation)
     {
+        _playerMovement.enabled = false;
         _newPosition = _targetPosition;
         _newRotation = _targetRotation;
         charToInt = true;
