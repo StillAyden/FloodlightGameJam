@@ -19,16 +19,15 @@ public class Phone : MonoBehaviour, IInteractable
     {
         _interacted = false;
         this.GetComponent<Collider>().enabled = true;
+        _buttons = GameObject.Find("Buttons");
+        _receiver = GameObject.Find("Receiver");
         _buttons.SetActive(false);
         _receiver.SetActive(false);
     }
     private void Start()
     {
         _playerMainCamera = GameObject.Find("Main Camera");
-        _playerMovement = _playerMainCamera.GetComponent<PlayerMovement>(); 
-        
-        _buttons = GameObject.Find("Receiver");
-        _receiver = GameObject.Find("Buttons");
+        _playerMovement = _playerMainCamera.GetComponent<PlayerMovement>();;
     }
     public void interact()
     {
