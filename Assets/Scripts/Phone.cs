@@ -7,8 +7,7 @@ public class Phone : MonoBehaviour, IInteractable
 {
     [SerializeField] GameObject _playerMainCamera;
     private PlayerMovement _playerMovement;
-    [SerializeField] GameObject _CharacterRealParent;
-    [SerializeField, Range(0, 5)] float _cameraSpeed;
+    [SerializeField, Range(0, 5)] public float _cameraSpeed;
     private bool _interacted = false;
 
     [Header("Phone Colliders")]
@@ -20,17 +19,16 @@ public class Phone : MonoBehaviour, IInteractable
     {
         _interacted = false;
         this.GetComponent<Collider>().enabled = true;
+        _buttons.SetActive(false);
+        _receiver.SetActive(false);
     }
     private void Start()
     {
         _playerMainCamera = GameObject.Find("Main Camera");
         _playerMovement = _playerMainCamera.GetComponent<PlayerMovement>(); 
-        _CharacterRealParent = GameObject.Find("Character");
+        
         _buttons = GameObject.Find("Receiver");
         _receiver = GameObject.Find("Buttons");
-
-        _buttons.SetActive(false);
-        _receiver.SetActive(false);
     }
     public void interact()
     {
