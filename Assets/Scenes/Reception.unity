@@ -1705,8 +1705,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7a43e97616741a4787689e134c80121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerMainCamera: {fileID: 0}
-  _cameraSpeed: 1.8
+  _switchInteractions: {fileID: 0}
+  _interactivePosition: {x: 0.151, y: 2, z: -0.605}
+  _interactiveRotation: {x: 0.52991927, y: 0, z: 0, w: 0.8480481}
   _receiver: {fileID: 0}
   _buttons: {fileID: 0}
 --- !u!1 &1285573020
@@ -2373,8 +2374,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1869903650}
+  - component: {fileID: 1869903651}
   m_Layer: 0
-  m_Name: ManagerToSwitchInteractions
+  m_Name: ManagerSwitchInteractions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2395,6 +2397,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1869903651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869903649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba4e922b46ca3b941a5875845e2c291f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerMainCamera: {fileID: 0}
+  _playerMovement: {fileID: 0}
+  _characterRealParent: {fileID: 0}
+  _cameraSpeed: 1.8
+  _newPosition: {x: 0, y: 0, z: 0}
+  _newRotation: {x: 0, y: 0, z: 0, w: 0}
+  charToInt: 0
+  intToChar: 0
 --- !u!1 &2069017407
 GameObject:
   m_ObjectHideFlags: 0

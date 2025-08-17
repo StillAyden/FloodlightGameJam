@@ -7,4 +7,6 @@ public class Phone_Receiver : MonoBehaviour, IInteractable
         Debug.Log(transform.name);
     }
 
+   
+
 }
