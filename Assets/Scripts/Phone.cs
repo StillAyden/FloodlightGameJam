@@ -5,6 +5,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Phone : MonoBehaviour, IInteractable
 {
+    [Header("Change Interactions")]
     [SerializeField] ManagerSwitchInteractions _switchInteractions;
     [SerializeField] Vector3 _interactivePosition;
     [SerializeField] Quaternion _interactiveRotation;
@@ -14,7 +15,10 @@ public class Phone : MonoBehaviour, IInteractable
     [SerializeField] GameObject _receiver;
     [SerializeField] GameObject _buttons;
 
-
+    private void Start()
+    {
+        _switchInteractions = GameObject.Find("ManagerSwitchInteractions").GetComponent<ManagerSwitchInteractions>();
+    }
     private void OnEnable()
     {
         _interacted = false;
@@ -24,10 +28,7 @@ public class Phone : MonoBehaviour, IInteractable
         _buttons.SetActive(false);
         _receiver.SetActive(false);
     }
-    private void Start()
-    {
-        _switchInteractions = GameObject.Find("ManagerSwitchInteractions").GetComponent<ManagerSwitchInteractions>();
-    }
+    
     public void interact()
     {
         //what happens when the player interacts with phone
