@@ -2,7 +2,7 @@ using Unity.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Phone_Receiver : MonoBehaviour, IInteractable
+public class Phone_Receiver : MonoBehaviour, IInteractable, IEndDialogie
 {
     [SerializeField] DialogueSystem _dialogueSystem;
     [SerializeField] PlayerMovement _playerMovement;
@@ -22,7 +22,7 @@ public class Phone_Receiver : MonoBehaviour, IInteractable
         //an animation of phone receiver comes to your face
 
         // Testing Dialogue
-        _dialogueSystem.TriggerDialogueSequence(0);
+        _dialogueSystem.TriggerDialogueSequence(0,this.gameObject);
         _playerMovement.enabled = false;
         _goBack.enabled = false;
         Cursor.lockState = CursorLockMode.Confined;
@@ -32,6 +32,15 @@ public class Phone_Receiver : MonoBehaviour, IInteractable
 
         //once dialogue is completed phone is put down/or you can hold it up
     }
+
+    public void endDialogue()
+    {
+        _playerMovement.enabled = true;
+        _goBack.enabled = true;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
 
     //private void Update()
     //{

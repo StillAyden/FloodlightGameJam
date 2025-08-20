@@ -15,13 +15,14 @@ public class DialogueSystem : MonoBehaviour
     [Header("Reder Temp Stuff")]
     [SerializeField] TMP_Text speakerName;
     [SerializeField] TMP_Text dialogueText;
+    [SerializeField] GameObject _currentObject; //the GameObject was added to get the interface of IEndDialogue
 
 
     [Header("Control variables")]
     [SerializeField] int currentIndex = -1;
     Coroutine textGenRoutine = null;
 
-    public void TriggerDialogueSequence(int dialogueId)
+    public void TriggerDialogueSequence(int dialogueId, GameObject _clickedObject) //the GameObject was added to get the interface of IEndDialogue
     {
         //Reset and display dialogue
         currentIndex = -1;
@@ -31,6 +32,7 @@ public class DialogueSystem : MonoBehaviour
         canvasDialogue.gameObject.SetActive(true);
 
         //Add any Preparations for Dialogue here e.g. Cinematic Bars, etc.
+        _currentObject = _clickedObject; //the GameObject was added to get the interface of IEndDialogue
 
         StartDialogue(dialogueId);
     }
@@ -57,6 +59,7 @@ public class DialogueSystem : MonoBehaviour
         speakerName.text = "";
 
         AudioSource.Stop();
+        _currentObject.GetComponent<IEndDialogie>().endDialogue(); //the GameObject was added to get the interface of IEndDialogue
     }
 
     //Reder Added the Next Line
@@ -66,8 +69,12 @@ public class DialogueSystem : MonoBehaviour
         
         if (currentIndex != dialogueSequences[0].dialogueLines.Count-1)
         {
-            StartDialogue(0);
-            Debug.Log("Next Line");
+            if (!AudioSource.isPlaying)
+            {
+                StartDialogue(0);
+                Debug.Log("Next Line");
+            }
+           
         }
         else
         {
