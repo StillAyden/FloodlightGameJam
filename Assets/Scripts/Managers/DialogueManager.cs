@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,12 +9,16 @@ public class DialogueSystem : MonoBehaviour
 
     [Header("References")]
     [SerializeField] Canvas canvasDialogue; 
-    [SerializeField] Text speakerName;
-    [SerializeField] Text dialogueText;
+    //[SerializeField] Text speakerName;
+    //[SerializeField] Text dialogueText;
     [SerializeField] AudioSource AudioSource;
+    [Header("Reder Temp Stuff")]
+    [SerializeField] TMP_Text speakerName;
+    [SerializeField] TMP_Text dialogueText;
+
 
     [Header("Control variables")]
-    int currentIndex = -1;
+    [SerializeField] int currentIndex = -1;
     Coroutine textGenRoutine = null;
 
     public void TriggerDialogueSequence(int dialogueId)
@@ -43,7 +48,7 @@ public class DialogueSystem : MonoBehaviour
         }
     }
 
-    void SkipDialogueScene()
+    public void SkipDialogueScene()
     {
         canvasDialogue.gameObject.SetActive(false);
 
@@ -52,6 +57,22 @@ public class DialogueSystem : MonoBehaviour
         speakerName.text = "";
 
         AudioSource.Stop();
+    }
+
+    //Reder Added the Next Line
+    public void NextLine()
+    {
+        //testing next line
+        
+        if (currentIndex != dialogueSequences[0].dialogueLines.Count-1)
+        {
+            StartDialogue(0);
+            Debug.Log("Next Line");
+        }
+        else
+        {
+            SkipDialogueScene();
+        }
     }
 
     private void OnDestroy()

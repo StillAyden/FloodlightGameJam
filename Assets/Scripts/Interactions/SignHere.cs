@@ -6,5 +6,7 @@ public class SignHere : MonoBehaviour, IInteractable
     {
         Debug.Log(transform.name);
         //Have the player sign the document
+        //an animation of signing is happening
+        //document goes away and you are shifted back to the character
     }
 }
