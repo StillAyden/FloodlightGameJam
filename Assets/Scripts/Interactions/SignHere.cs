@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SignHere : MonoBehaviour
+public class SignHere : MonoBehaviour, IInteractable
 {
     public void interact()
     {
