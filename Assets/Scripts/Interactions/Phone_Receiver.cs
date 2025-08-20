@@ -12,6 +12,7 @@ public class Phone_Receiver : MonoBehaviour, IInteractable
     public void interact()
     {
         Debug.Log(transform.name);
+        //Have the phone receiver to start the dialogue
     }
 
     //private void Update()

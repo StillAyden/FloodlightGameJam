@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class Phone_Button : MonoBehaviour, IInteractable
 {
 
-    [SerializeField] ManagerSwitchInteractions _switchInteractions;
+    //[SerializeField] ManagerSwitchInteractions _switchInteractions;
     //private Phone _phoneScript;
 
     //private void Start()
