@@ -26,7 +26,7 @@ public class Phone : MonoBehaviour, IInteractable
         _buttons = GameObject.Find("Buttons");
         _receiver = GameObject.Find("Receiver");
         _buttons.SetActive(false);
-        _receiver.SetActive(false);
+        _receiver.GetComponent<Collider>().enabled = false;
     }
     
     public void interact()
@@ -38,7 +38,7 @@ public class Phone : MonoBehaviour, IInteractable
             _interacted = true;
             this.GetComponent<Collider>().enabled = false;
             _buttons.SetActive(true);
-            _receiver.SetActive(true);
+            _receiver.GetComponent<Collider>().enabled = true;
             _switchInteractions.characterToInteraction(_interactivePosition, _interactiveRotation);
             Debug.Log("Phone is Interacted");
             this.enabled = false;

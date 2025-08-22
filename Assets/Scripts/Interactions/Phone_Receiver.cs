@@ -7,6 +7,13 @@ public class Phone_Receiver : MonoBehaviour, IInteractable, IEndDialogie
     [SerializeField] DialogueSystem _dialogueSystem;
     [SerializeField] PlayerMovement _playerMovement;
     [SerializeField] GoBackIntToChar _goBack;
+    [SerializeField] bool _pickedUp = false;
+
+    [Header("Receiver Sounds")]
+    [SerializeField] AudioSource AudioSource;
+    [SerializeField] AudioClip _audioRinging;
+    [SerializeField] AudioClip _audioPickUp;
+    [SerializeField] AudioClip _audioPutDown;
     //private Phone _phoneScript;
 
     private void Start()
@@ -15,6 +22,8 @@ public class Phone_Receiver : MonoBehaviour, IInteractable, IEndDialogie
         _dialogueSystem = GameObject.Find("DialogueManager").GetComponent<DialogueSystem>();
         _playerMovement = GameObject.Find("Main Camera").GetComponent<PlayerMovement>();
         _goBack = GameObject.Find("GoBack").GetComponent<GoBackIntToChar>();
+
+        RingPhone();
     }
     public void interact()
     {
@@ -22,11 +31,20 @@ public class Phone_Receiver : MonoBehaviour, IInteractable, IEndDialogie
         //an animation of phone receiver comes to your face
 
         // Testing Dialogue
-        _dialogueSystem.TriggerDialogueSequence(0,this.gameObject);
+        _dialogueSystem.TriggerDialogueSequence(0, this.gameObject);
         _playerMovement.enabled = false;
         _goBack.enabled = false;
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
+
+        //temp testing
+        if (_pickedUp == false)
+        {
+            PickedUp();
+            _pickedUp = true;
+            
+        }
+
 
         //Have the phone receiver to start the dialogue
 
@@ -39,8 +57,27 @@ public class Phone_Receiver : MonoBehaviour, IInteractable, IEndDialogie
         _goBack.enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        PutDown();
+        _pickedUp = false;
     }
 
+    public void RingPhone()
+    {
+        AudioSource.clip = _audioRinging;
+        AudioSource.Play();
+    }
+
+    public void PickedUp()
+    {
+        AudioSource.clip = _audioPickUp;
+        AudioSource.Play();
+    }
+
+    public void PutDown()
+    {
+        AudioSource.clip = _audioPickUp;
+        AudioSource.Play();
+    }
 
     //private void Update()
     //{

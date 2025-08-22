@@ -3,6 +3,9 @@ using UnityEngine.InputSystem;
 
 public class Phone_Button : MonoBehaviour, IInteractable
 {
+    [Header("Button Sounds")]
+    [SerializeField] AudioSource AudioSource;
+    [SerializeField] AudioClip _audioButtonPressed;
 
     //[SerializeField] ManagerSwitchInteractions _switchInteractions;
     //private Phone _phoneScript;
@@ -22,6 +25,8 @@ public class Phone_Button : MonoBehaviour, IInteractable
     public void interact()
     {
         // Use the GameObject's name to determine which button was pressed
+        AudioSource.clip = _audioButtonPressed;
+        AudioSource.Play();
         switch (transform.name)
         {
             case "Button_0":
