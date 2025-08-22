@@ -882,7 +882,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioSourceComputer: {fileID: 256692854}
   _audioSourceMail: {fileID: 256692855}
-  _audioIdling: {fileID: 8300000, guid: 73800b03a8008f4468727906de95253f, type: 3}
+  _audioIdling: {fileID: 8300000, guid: e16999f5f6958404ba6e69b3faf4ca21, type: 3}
   _audioReceiveMail: {fileID: 8300000, guid: 918b9232f7602d348812d8b3b14079e0, type: 3}
 --- !u!82 &256692854
 AudioSource:
@@ -897,9 +897,9 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.15
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1207,11 +1207,11 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 9e14c9ae8c5bdc044a4c2b44f327df53, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
