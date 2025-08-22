@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class Phone_Button : MonoBehaviour, IInteractable
 {
-    [Header("Button Sounds")]
+    [Header("Sounds")]
     [SerializeField] AudioSource AudioSource;
     [SerializeField] AudioClip _audioButtonPressed;
 

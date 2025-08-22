@@ -14,6 +14,8 @@ public class Document : MonoBehaviour, IInteractable
     {
         _interacted = false;
         this.GetComponent<Collider>().enabled = true;
+        _documentSign = GameObject.Find("SignHere");
+        _documentSign.GetComponent<Collider>().enabled = false;
     }
     private void Start()
     {

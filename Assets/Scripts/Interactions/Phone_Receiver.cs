@@ -9,7 +9,7 @@ public class Phone_Receiver : MonoBehaviour, IInteractable, IEndDialogie
     [SerializeField] GoBackIntToChar _goBack;
     [SerializeField] bool _pickedUp = false;
 
-    [Header("Receiver Sounds")]
+    [Header("Sounds")]
     [SerializeField] AudioSource AudioSource;
     [SerializeField] AudioClip _audioRinging;
     [SerializeField] AudioClip _audioPickUp;
@@ -23,7 +23,7 @@ public class Phone_Receiver : MonoBehaviour, IInteractable, IEndDialogie
         _playerMovement = GameObject.Find("Main Camera").GetComponent<PlayerMovement>();
         _goBack = GameObject.Find("GoBack").GetComponent<GoBackIntToChar>();
 
-        RingPhone();
+        //RingPhone();
     }
     public void interact()
     {
