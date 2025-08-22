@@ -61,7 +61,7 @@ public class Phone_Receiver : MonoBehaviour, IInteractable, IEndDialogie
         _pickedUp = false;
     }
 
-    public void RingPhone()
+    public void RingPhone() //maybe something can trigger the ringing from something
     {
         AudioSource.clip = _audioRinging;
         AudioSource.Play();

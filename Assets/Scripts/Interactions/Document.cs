@@ -7,6 +7,9 @@ public class Document : MonoBehaviour, IInteractable
     [SerializeField] Vector3 _interactivePosition;
     [SerializeField] Quaternion _interactiveRotation;
     private bool _interacted = false;
+
+    [Header("Handling Child Interactions")]
+    [SerializeField] GameObject _documentSign;
     private void OnEnable()
     {
         _interacted = false;
@@ -15,6 +18,8 @@ public class Document : MonoBehaviour, IInteractable
     private void Start()
     {
         _switchInteractions = GameObject.Find("ManagerSwitchInteractions").GetComponent<ManagerSwitchInteractions>();
+        _documentSign = GameObject.Find("SignHere");
+        _documentSign.GetComponent<Collider>().enabled = false;
     }
     public void interact()
     {
@@ -25,6 +30,7 @@ public class Document : MonoBehaviour, IInteractable
             _interacted = true;
             this.GetComponent<Collider>().enabled = false;
             _switchInteractions.characterToInteraction(_interactivePosition, _interactiveRotation);
+            _documentSign.GetComponent<Collider>().enabled = true;
             Debug.Log("Document is Interacted");
             this.enabled = false;
         }
