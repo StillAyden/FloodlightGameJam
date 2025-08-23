@@ -1,4 +1,4 @@
-<REAPER_PROJECT 0.1 "7.33/win64" 1755862787
+<REAPER_PROJECT 0.1 "7.33/win64" 1755858391
   <NOTES 0 2
   >
   RIPPLE 0
@@ -32,7 +32,7 @@
   >
   <APPLYFX_CFG
   >
-  RENDER_FILE "C:\Users\Reder\Documents\GitHub\FloodlightGameJam\Assets\Sounds\SFX\Temporary Sounds\Computer\Idling_1_01.wav"
+  RENDER_FILE "C:\Users\Reder\Documents\GitHub\FloodlightGameJam\Assets\Sounds\SFX\Temporary Sounds\Document\SigningDocument.wav"
   RENDER_FMT 0 2 44100
   RENDER_1X 0
   RENDER_RANGE 1 0 0 0 1000

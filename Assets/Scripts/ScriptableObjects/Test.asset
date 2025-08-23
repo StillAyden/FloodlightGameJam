@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Test
+  m_EditorClassIdentifier: Assembly-CSharp::TaskSet
+  numberOfTasks: 1
+  subTasks:
+  - interactionType: 0
+    headerOrTitle: 
+    text: 
+    clip: {fileID: 0}
+    subDialogues: {fileID: 0}
+    completed: 0
+  mainTasks:
+  - interactionType: 0
+    headerOrTitle: 
+    text: 
+    clip: {fileID: 0}
+    mainDialogues: {fileID: 0}
+    completed: 0
+  - interactionType: 2
+    headerOrTitle: 
+    text: 
+    clip: {fileID: 0}
+    mainDialogues: {fileID: 0}
+    completed: 0
