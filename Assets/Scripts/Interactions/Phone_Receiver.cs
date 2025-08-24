@@ -52,8 +52,7 @@ public class Phone_Receiver : MonoBehaviour, IInteractable, IEndDialogie
             _dialogueSystem.TriggerDialogueSequence(voiceMailDialogue[0], voiceMailClip[0], this.gameObject);
             voiceMailClip.Remove(voiceMailClip[0]);
             voiceMailDialogue.Remove(voiceMailDialogue[0]);
-            taskNumber.Remove(taskNumber[0]);
-            
+            taskNumber.Remove(taskNumber[0]); 
         }
         //send an event to the DayNightManager to say task is completed
 

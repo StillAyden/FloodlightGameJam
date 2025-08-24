@@ -12,29 +12,40 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Test
   m_EditorClassIdentifier: Assembly-CSharp::TaskSet
-  numberOfTasks: 3
-  subTasks:
-  - interactionType: 2
+  numberOfTasks: 5
+  tasks:
+  - taskType: 1
+    interactionType: 2
     headerOrTitle: 
     text: 
     clip: {fileID: 8300000, guid: cbbc120450c87024bbe4978fc58349e2, type: 3}
     subDialogues: {fileID: 11400000, guid: d34b6ffc314d38b41bbf61ddf2906a4b, type: 2}
     completed: 0
-  - interactionType: 0
-    headerOrTitle: Renew Licence
-    text: This is to extend your car warranty.
+  - taskType: 0
+    interactionType: 1
+    headerOrTitle: 
+    text: 
     clip: {fileID: 0}
     subDialogues: {fileID: 0}
     completed: 0
-  - interactionType: 2
+  - taskType: 1
+    interactionType: 2
     headerOrTitle: 
     text: 
     clip: {fileID: 8300000, guid: cbbc120450c87024bbe4978fc58349e2, type: 3}
     subDialogues: {fileID: 11400000, guid: d34b6ffc314d38b41bbf61ddf2906a4b, type: 2}
     completed: 0
-  susTasks:
-  - interactionType: 2
-    _susDialouges: {fileID: 11400000, guid: d34b6ffc314d38b41bbf61ddf2906a4b, type: 2}
-    headerOrTitle: 
-    text: 
+  - taskType: 1
+    interactionType: 0
+    headerOrTitle: Hello World
+    text: Hehe hacked into your computer LOL
+    clip: {fileID: 0}
+    subDialogues: {fileID: 0}
+    completed: 0
+  - taskType: 1
+    interactionType: 0
+    headerOrTitle: Update Payments
+    text: Contact us back to extend your warranty on your car payments.
+    clip: {fileID: 0}
+    subDialogues: {fileID: 0}
     completed: 0

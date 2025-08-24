@@ -7,6 +7,7 @@ using UnityEngine;
 [System.Serializable]
 public struct TaskData
 {
+    public TaskType taskType;
     public InteractionType interactionType;
     [Tooltip("use this only for Display Purposes")]
     [TextArea(1, 2)] public string headerOrTitle; //use this only for Display Purposes
@@ -21,27 +22,14 @@ public struct TaskData
     public bool completed;
 }
 
-[System.Serializable]
-public struct SusTasks
+public enum TaskType
 {
-    public InteractionType interactionType;
-    //use this only for Audio purposes
-    [Tooltip("use this only for Audio purposes")]
-    public DialogueSequence_SO _susDialouges;
-    [Tooltip("use this only for Display Purposes")]
-    [TextArea(1, 2)] public string headerOrTitle; //use this only for Display Purposes
-    [Tooltip("use this only for Display Purposes")]
-    [TextArea(5, 10)] public string text; //use this only for Display Purposes
-
-    //[Tooltip("use this only for Audio purposes")]
-    //public AudioClip clip; //use this only for Audio purposes
-    //[Tooltip("use this only for Audio purposes")]
-    //public DialogueSequence_SO mainDialogues; //use this only for Audio purposes
-
-    public bool completed;
+    Sus,
+    Sub
 }
 
-    public enum InteractionType
+
+public enum InteractionType
 {
     Document,
     ReadEmail,
@@ -53,12 +41,11 @@ public class TaskSet : ScriptableObject
 {
     [Header("Tasks")]
     public int numberOfTasks;
-    public List<TaskData> subTasks = new List<TaskData>();
-    public List<SusTasks> susTasks = new List<SusTasks>(); 
+    public List<TaskData> tasks = new List<TaskData>();
 
     private void OnValidate()
     {
         // Keep numberOfTasks in sync with list count
-        numberOfTasks = subTasks.Count;
+        numberOfTasks = tasks.Count;
     }
 }

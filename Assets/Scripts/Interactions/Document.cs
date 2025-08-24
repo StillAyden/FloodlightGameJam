@@ -32,8 +32,18 @@ public class Document : MonoBehaviour, IInteractable
             _interacted = true;
             this.GetComponent<Collider>().enabled = false;
             _switchInteractions.characterToInteraction(_interactivePosition, _interactiveRotation);
-            _documentSign.GetComponent<Collider>().enabled = true;
-            Debug.Log("Document is Interacted");
+            if (_documentSign.GetComponent<SignHere>().HeaderTitle.Count>0)
+            {
+                _documentSign.GetComponent<Collider>().enabled = true;
+                _documentSign.gameObject.SetActive(true);
+            }
+            else
+            {
+                _documentSign.gameObject.SetActive(false);
+            }
+
+
+                Debug.Log("Document is Interacted");
             this.enabled = false;
         }
        

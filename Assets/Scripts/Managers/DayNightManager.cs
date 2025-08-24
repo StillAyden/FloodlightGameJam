@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class DayNightManager : MonoBehaviour
 {
@@ -13,11 +14,12 @@ public class DayNightManager : MonoBehaviour
 
     [Header("Send Tasks")]
     [SerializeField] private Phone_Receiver phoneManager;
-
+    [SerializeField] private SignHere documentManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         phoneManager = GameObject.Find("Receiver").GetComponent<Phone_Receiver>();
+        documentManager = GameObject.Find("SignHere").GetComponent<SignHere>();
 
         getNumberOfDays = _actsOrChapters.Length;
         currentDay = 0;
@@ -26,15 +28,22 @@ public class DayNightManager : MonoBehaviour
         //send the task to the relevant interactions that causes it, such as add an email, add a document, add a voicemail
         for (int i = 0; i < getNumberOfTasks; i++) 
         {
-            var task = _actsOrChapters[currentDay].subTasks[i];
-            Debug.Log("Task has added: "+ task.interactionType);
+            var task = _actsOrChapters[currentDay].tasks[i];
+            //Debug.Log("Task has added: "+ task.interactionType);
             // switch based on InteractionType
             switch (task.interactionType)
             {
                 case InteractionType.Document:
                     Debug.Log("Add Document: " + task.headerOrTitle);
                     // TODO: add more documents to the Document system
-
+                    if (task.taskType == TaskType.Sub)
+                    {
+                        documentManager.SetdocumentTasks(task.headerOrTitle, task.text, i);
+                    }
+                    else
+                    {
+                        Debug.Log("It is a Sus task");
+                    }
                     //testing
                     Debug.Log("Task Number: " + i + " Header: " + task.headerOrTitle + " Body: " + task.text);
 
@@ -54,8 +63,16 @@ public class DayNightManager : MonoBehaviour
 
                 case InteractionType.RingPhone:
                     Debug.Log("Make Phone Ring, clip: " + task.clip);
-                    // TODO: add the clip to make a voice mail
-                    phoneManager.SetphoneTasks(task.clip, task.subDialogues,i);
+                    // TODO: add the clip, dialogue and taskValue to make a voice mail
+                    if (task.taskType == TaskType.Sub)
+                    {
+                        phoneManager.SetphoneTasks(task.clip, task.subDialogues, i);
+                    }
+                    else
+                    {
+                        Debug.Log("It is a Sus task");
+                    }
+                        
                     //testing
                     Debug.Log("Task Number: " + i + " Header: " + task.clip.name + " Body: " + task.subDialogues.name);
 
@@ -65,19 +82,13 @@ public class DayNightManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void taskCompleted(int whichTaskCompleted)
     {
-        var task = _actsOrChapters[currentDay].subTasks[whichTaskCompleted];
+        var task = _actsOrChapters[currentDay].tasks[whichTaskCompleted];
         task.completed = true;
         for (int i = 0; i < getNumberOfTasks; i++)
         {
-            if (_actsOrChapters[currentDay].subTasks[i].completed == true)
+            if (_actsOrChapters[currentDay].tasks[i].completed == true)
             {
                 //change new day
                 tasksCompleted = true;
@@ -88,6 +99,9 @@ public class DayNightManager : MonoBehaviour
                 tasksCompleted = false;
             }
         }
+
+        //activate a SUS task based on certain scenarios
+
     }
 
     public void nextDay()
