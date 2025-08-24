@@ -12,24 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Test
   m_EditorClassIdentifier: Assembly-CSharp::TaskSet
-  numberOfTasks: 1
+  numberOfTasks: 3
   subTasks:
-  - interactionType: 0
+  - interactionType: 2
     headerOrTitle: 
     text: 
+    clip: {fileID: 8300000, guid: cbbc120450c87024bbe4978fc58349e2, type: 3}
+    subDialogues: {fileID: 11400000, guid: d34b6ffc314d38b41bbf61ddf2906a4b, type: 2}
+    completed: 0
+  - interactionType: 0
+    headerOrTitle: Renew Licence
+    text: This is to extend your car warranty.
     clip: {fileID: 0}
     subDialogues: {fileID: 0}
-    completed: 0
-  mainTasks:
-  - interactionType: 0
-    headerOrTitle: 
-    text: 
-    clip: {fileID: 0}
-    mainDialogues: {fileID: 0}
     completed: 0
   - interactionType: 2
     headerOrTitle: 
     text: 
-    clip: {fileID: 0}
-    mainDialogues: {fileID: 0}
+    clip: {fileID: 8300000, guid: cbbc120450c87024bbe4978fc58349e2, type: 3}
+    subDialogues: {fileID: 11400000, guid: d34b6ffc314d38b41bbf61ddf2906a4b, type: 2}
+    completed: 0
+  susTasks:
+  - interactionType: 2
+    _susDialouges: {fileID: 11400000, guid: d34b6ffc314d38b41bbf61ddf2906a4b, type: 2}
+    headerOrTitle: 
+    text: 
     completed: 0

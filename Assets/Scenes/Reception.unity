@@ -1411,6 +1411,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 410564137}
+  - component: {fileID: 410564138}
   m_Layer: 0
   m_Name: Day/Night Manager
   m_TagString: Untagged
@@ -1433,6 +1434,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &410564138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410564136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1ab57c8026428e44b76410fff49cc90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actsOrChapters:
+  - {fileID: 11400000, guid: cdf5387b6450bca469b6d1930e366976, type: 2}
+  - {fileID: 11400000, guid: cdf5387b6450bca469b6d1930e366976, type: 2}
+  getNumberOfDays: 0
+  currentDay: 0
+  tasksCompleted: 0
+  getNumberOfTasks: 0
+  phoneManager: {fileID: 0}
 --- !u!1 &466969820
 GameObject:
   m_ObjectHideFlags: 0
@@ -2211,8 +2232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9da746c06a6e6e74887ba72c356ab393, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueSequences:
-  - {fileID: 11400000, guid: d34b6ffc314d38b41bbf61ddf2906a4b, type: 2}
+  dialogueSequences: []
   canvasDialogue: {fileID: 706499086}
   AudioSource: {fileID: 1442510229}
   speakerName: {fileID: 142130345}
@@ -3689,12 +3709,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dialogueSystem: {fileID: 0}
   _playerMovement: {fileID: 0}
+  _dayNightManager: {fileID: 0}
   _goBack: {fileID: 0}
   _pickedUp: 0
   AudioSource: {fileID: 1397923714}
   _audioRinging: {fileID: 8300000, guid: 18b097330ab1d8f43ab2130c6916a058, type: 3}
   _audioPickUp: {fileID: 8300000, guid: 0740cfe483a3a8c4ab6d7c5ce94afb6e, type: 3}
   _audioPutDown: {fileID: 8300000, guid: 178f6a0a8b1462f418847b8bea03eae2, type: 3}
+  voiceMailClip: []
+  voiceMailDialogue: []
+  taskNumber: 
 --- !u!82 &1397923714
 AudioSource:
   m_ObjectHideFlags: 0

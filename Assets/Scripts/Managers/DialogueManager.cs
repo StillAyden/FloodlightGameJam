@@ -1,11 +1,13 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DialogueSystem : MonoBehaviour
 {
-    [SerializeField] DialogueSequence_SO[] dialogueSequences;
+    [SerializeField] List<DialogueSequence_SO> dialogueSequences = new List<DialogueSequence_SO>();
 
     [Header("References")]
     [SerializeField] Canvas canvasDialogue; 
@@ -22,7 +24,7 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] int currentIndex = -1;
     Coroutine textGenRoutine = null;
 
-    public void TriggerDialogueSequence(int dialogueId, GameObject _clickedObject) //the GameObject was added to get the interface of IEndDialogue
+    public void TriggerDialogueSequence(DialogueSequence_SO playDialogue, AudioClip playAudio, GameObject _clickedObject) //(int dialogueId, GameObject _clickedObject) //the GameObject was added to get the interface of IEndDialogue
     {
         //Reset and display dialogue
         currentIndex = -1;
@@ -30,24 +32,37 @@ public class DialogueSystem : MonoBehaviour
         speakerName.text = "";
 
         canvasDialogue.gameObject.SetActive(true);
-
+        dialogueSequences.Clear();
+        dialogueSequences.Add(playDialogue);
+        AudioSource.clip = playAudio;
         //Add any Preparations for Dialogue here e.g. Cinematic Bars, etc.
         _currentObject = _clickedObject; //the GameObject was added to get the interface of IEndDialogue
 
-        StartDialogue(dialogueId);
+        StartDialogue();
     }
 
-    void StartDialogue(int dialogueId)
+    void StartDialogue() //(int dialogueId)
     {
-        if (currentIndex < dialogueSequences[dialogueId].dialogueLines.Count - 1 && !AudioSource.isPlaying)
+
+        if (currentIndex < dialogueSequences[0].dialogueLines.Count - 1 && !AudioSource.isPlaying)
         {
             currentIndex++;
-            speakerName.text = dialogueSequences[dialogueId].dialogueLines[currentIndex].name;
-            dialogueText.text = dialogueSequences[dialogueId].dialogueLines[currentIndex].text;
+            speakerName.text = dialogueSequences[0].dialogueLines[currentIndex].name;
+            dialogueText.text = dialogueSequences[0].dialogueLines[currentIndex].text;
 
-            AudioSource.clip = dialogueSequences[dialogueId].dialogueLines[currentIndex].clip;
+            AudioSource.clip = dialogueSequences[0].dialogueLines[currentIndex].clip;
             AudioSource.Play();
         }
+
+        //if (currentIndex < dialogueSequences[dialogueId].dialogueLines.Count - 1 && !AudioSource.isPlaying)
+        //{
+        //    currentIndex++;
+        //    speakerName.text = dialogueSequences[dialogueId].dialogueLines[currentIndex].name;
+        //    dialogueText.text = dialogueSequences[dialogueId].dialogueLines[currentIndex].text;
+
+        //    AudioSource.clip = dialogueSequences[dialogueId].dialogueLines[currentIndex].clip;
+        //    AudioSource.Play();
+        //}
     }
 
     public void SkipDialogueScene()
@@ -71,7 +86,7 @@ public class DialogueSystem : MonoBehaviour
         {
             if (!AudioSource.isPlaying)
             {
-                StartDialogue(0);
+                StartDialogue(); //StartDialogue(0);
                 Debug.Log("Next Line");
             }
            

@@ -13,13 +13,13 @@ public class Screen : MonoBehaviour, IInteractable
         _audioSourceComputer.clip = _audioIdling;
         _audioSourceComputer.Play();
 
-        ReceiveMail();
+        //ReceiveMail();
     }
     public void interact()
     {
         Debug.Log(transform.name);
         //Have the player click on the screen to access the menus
-
+        // send an event to the DayNight Manager to say task is completed
 
     }
 

@@ -8,7 +8,7 @@ public class SignHere : MonoBehaviour, IInteractable
     public void interact()
     {
         Debug.Log(transform.name);
-
+        // send an event to the DayNight Manager to say task is completed
         _audioSource.clip = _audioClipDocument;
         _audioSource.Play();
         //Have the player sign the document

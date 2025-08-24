@@ -24,6 +24,7 @@ public class Computer : MonoBehaviour, IInteractable
     public void interact()
     {
         // what happens when the player interacts with phone
+       
         if (_interacted == false)
         {
             _switchInteractions._playerMainCamera.transform.SetParent(this.transform);
