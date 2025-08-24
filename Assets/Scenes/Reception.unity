@@ -1454,6 +1454,7 @@ MonoBehaviour:
   tasksCompleted: 0
   getNumberOfTasks: 0
   phoneManager: {fileID: 0}
+  documentManager: {fileID: 0}
 --- !u!1 &466969820
 GameObject:
   m_ObjectHideFlags: 0
@@ -2483,8 +2484,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25796a7c88604a54caa91605e1e87ea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dayNightManager: {fileID: 0}
   _audioSource: {fileID: 762197746}
   _audioClipDocument: {fileID: 8300000, guid: 8ea7fd8475dfb084ea8791389b767333, type: 3}
+  HeaderTitle: []
+  bodyText: []
+  taskNumber: 
 --- !u!82 &762197746
 AudioSource:
   m_ObjectHideFlags: 0
