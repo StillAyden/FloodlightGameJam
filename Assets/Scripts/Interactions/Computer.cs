@@ -1,6 +1,9 @@
 using UnityEngine;
 public class Computer : MonoBehaviour, IInteractable
 {
+    //can interacat
+    public bool _canInteract = false;
+
     [Header("Change Interactions")]
     [SerializeField] ManagerSwitchInteractions _switchInteractions;
     [SerializeField] Vector3 _interactivePosition;

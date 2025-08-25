@@ -3,6 +3,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class DayNightManager : MonoBehaviour
 {
@@ -16,6 +17,12 @@ public class DayNightManager : MonoBehaviour
     [SerializeField] private Phone_Receiver phoneManager;
     [SerializeField] private SignHere documentManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    //get reference canInteract on whatever interactive scripts
+    //turn to true once a specifc task is activated
+
+
+
     void Start()
     {
         phoneManager = GameObject.Find("Receiver").GetComponent<Phone_Receiver>();
@@ -26,24 +33,25 @@ public class DayNightManager : MonoBehaviour
         getNumberOfTasks = _actsOrChapters[currentDay].numberOfTasks;
         //taskCompleted();
         //send the task to the relevant interactions that causes it, such as add an email, add a document, add a voicemail
-        for (int i = 0; i < getNumberOfTasks; i++) 
+        getTasks();
+    }
+
+    public void getTasks()
+    {
+        for (int i = 0; i < getNumberOfTasks; i++)
         {
             var task = _actsOrChapters[currentDay].tasks[i];
             //Debug.Log("Task has added: "+ task.interactionType);
+
             // switch based on InteractionType
             switch (task.interactionType)
             {
                 case InteractionType.Document:
                     Debug.Log("Add Document: " + task.headerOrTitle);
                     // TODO: add more documents to the Document system
-                    if (task.taskType == TaskType.Sub)
-                    {
-                        documentManager.SetdocumentTasks(task.headerOrTitle, task.text, i);
-                    }
-                    else
-                    {
-                        Debug.Log("It is a Sus task");
-                    }
+
+                    documentManager.SetdocumentTasks(task.headerOrTitle, task.text, i);
+
                     //testing
                     Debug.Log("Task Number: " + i + " Header: " + task.headerOrTitle + " Body: " + task.text);
 
@@ -56,7 +64,7 @@ public class DayNightManager : MonoBehaviour
                     // TODO: add emails to your system
 
                     //testing
-                    Debug.Log("Task Number: "+i+" Header: " + task.headerOrTitle + " Body: "+ task.text);
+                    Debug.Log("Task Number: " + i + " Header: " + task.headerOrTitle + " Body: " + task.text);
 
                     //send the current i to relevant script this will help for completing tasks
                     break;
@@ -72,13 +80,13 @@ public class DayNightManager : MonoBehaviour
                     {
                         Debug.Log("It is a Sus task");
                     }
-                        
+
                     //testing
                     Debug.Log("Task Number: " + i + " Header: " + task.clip.name + " Body: " + task.subDialogues.name);
 
                     //send the current i to relevant script this will help for completing tasks
                     break;
-            }
+            }/////////
         }
     }
 
@@ -116,8 +124,11 @@ public class DayNightManager : MonoBehaviour
             //maybe a dialogue that appears on the screen to say end of the day perhaps?
             //fadeToBlack
             //show text that says Day: 31 etc
-            //fadIn
+            //fadeIn
             //send the task to the relevant interactions that causes it, such as add an email, add a document, make the phone ring
+            getTasks();
+
+            //SceneManager.LoadSceneAsync(); //just to load models
         }
     }
 }
