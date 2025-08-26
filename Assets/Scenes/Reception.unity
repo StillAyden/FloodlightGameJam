@@ -1329,7 +1329,7 @@ GameObject:
   - component: {fileID: 410564137}
   - component: {fileID: 410564138}
   m_Layer: 0
-  m_Name: Day/Night Manager
+  m_Name: Task Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1366,12 +1366,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f335f4383ea6cbb4d9f082f5f63c74da, type: 2}
   - {fileID: 11400000, guid: 65350a130aad0c54b94fa45a041e9c25, type: 2}
   - {fileID: 11400000, guid: d4b1b07c262e3ab48bb430b843650c81, type: 2}
+  - {fileID: 11400000, guid: c6b2588225e31b14686a9766d43b2f70, type: 2}
   getNumberOfDays: 0
   currentDay: 0
   tasksCompleted: 0
   getNumberOfTasks: 0
   phoneManager: {fileID: 0}
   documentManager: {fileID: 0}
+  _susTasksValue: 
 --- !u!1 &466969820
 GameObject:
   m_ObjectHideFlags: 0
@@ -3856,7 +3858,6 @@ MonoBehaviour:
   _audioRinging: {fileID: 8300000, guid: 18b097330ab1d8f43ab2130c6916a058, type: 3}
   _audioPickUp: {fileID: 8300000, guid: 0740cfe483a3a8c4ab6d7c5ce94afb6e, type: 3}
   _audioPutDown: {fileID: 8300000, guid: 178f6a0a8b1462f418847b8bea03eae2, type: 3}
-  voiceMailClip: []
   voiceMailDialogue: []
   taskNumber: 
 --- !u!82 &1397923714

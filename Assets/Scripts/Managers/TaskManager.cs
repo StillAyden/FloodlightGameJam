@@ -1,11 +1,12 @@
 using NUnit.Framework;
+using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
-public class DayNightManager : MonoBehaviour
+public class TaskManager: MonoBehaviour
 {
     [SerializeField] TaskSet[] _actsOrChapters;
     [SerializeField] int getNumberOfDays;
@@ -16,7 +17,9 @@ public class DayNightManager : MonoBehaviour
     [Header("Send Tasks")]
     [SerializeField] private Phone_Receiver phoneManager;
     [SerializeField] private SignHere documentManager;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    [Header("Sus Task/s")]
+    [SerializeField] List<int> _susTasksValue = new List<int>();
 
     //get reference canInteract on whatever interactive scripts
     //turn to true once a specifc task is activated
@@ -49,9 +52,16 @@ public class DayNightManager : MonoBehaviour
                 case InteractionType.Document:
                     Debug.Log("Add Document: " + task.headerOrTitle);
                     // TODO: add more documents to the Document system
-
-                    documentManager.SetdocumentTasks(task.headerOrTitle, task.text, i);
-
+                    if (task.taskType == TaskType.Sub)
+                    {
+                        //phoneManager.SetphoneTasks(task.subDialogues, i);//task.clip,
+                        documentManager.SetdocumentTasks(task.headerOrTitle, task.text, i);
+                    }
+                    else
+                    {
+                        Debug.Log("It is a Sus task");
+                        _susTasksValue.Add(i);
+                    } 
                     //testing
                     Debug.Log("Task Number: " + i + " Header: " + task.headerOrTitle + " Body: " + task.text);
 
@@ -62,7 +72,15 @@ public class DayNightManager : MonoBehaviour
                 case InteractionType.ReadEmail:
                     Debug.Log("Add Email: " + task.headerOrTitle);
                     // TODO: add emails to your system
-
+                    if (task.taskType == TaskType.Sub)
+                    {
+                        //phoneManager.SetphoneTasks(task.subDialogues, i);//task.clip,
+                    }
+                    else
+                    {
+                        Debug.Log("It is a Sus task");
+                        _susTasksValue.Add(i);
+                    }
                     //testing
                     Debug.Log("Task Number: " + i + " Header: " + task.headerOrTitle + " Body: " + task.text);
 
@@ -70,19 +88,20 @@ public class DayNightManager : MonoBehaviour
                     break;
 
                 case InteractionType.RingPhone:
-                    Debug.Log("Make Phone Ring, clip: " + task.clip);
+                    //Debug.Log("Make Phone Ring, Dialog: " + task.subDialogues);
                     // TODO: add the clip, dialogue and taskValue to make a voice mail
                     if (task.taskType == TaskType.Sub)
                     {
-                        phoneManager.SetphoneTasks(task.clip, task.subDialogues, i);
+                        phoneManager.SetphoneTasks(task.subDialogues, i);//task.clip,
                     }
                     else
                     {
                         Debug.Log("It is a Sus task");
+                        _susTasksValue.Add(i);
                     }
 
                     //testing
-                    Debug.Log("Task Number: " + i + " Header: " + task.clip.name + " Body: " + task.subDialogues.name);
+                    Debug.Log("Task Number: " + i + " Dialogue: " + task.subDialogues.name);
 
                     //send the current i to relevant script this will help for completing tasks
                     break;

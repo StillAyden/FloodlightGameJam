@@ -12,37 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Task_Which Act_2
   m_EditorClassIdentifier: Assembly-CSharp::TaskSet
-  numberOfTasks: 5
+  numberOfTasks: 2
   tasks:
-  - taskType: 0
-    interactionType: 0
+  - taskType: 1
+    interactionType: 2
     headerOrTitle: 
     text: 
     clip: {fileID: 0}
     subDialogues: {fileID: 0}
     completed: 0
-  - taskType: 0
-    interactionType: 0
-    headerOrTitle: 
-    text: 
-    clip: {fileID: 0}
-    subDialogues: {fileID: 0}
-    completed: 0
-  - taskType: 0
-    interactionType: 0
-    headerOrTitle: 
-    text: 
-    clip: {fileID: 0}
-    subDialogues: {fileID: 0}
-    completed: 0
-  - taskType: 0
-    interactionType: 0
-    headerOrTitle: 
-    text: 
-    clip: {fileID: 0}
-    subDialogues: {fileID: 0}
-    completed: 0
-  - taskType: 0
+  - taskType: 1
     interactionType: 0
     headerOrTitle: 
     text: 

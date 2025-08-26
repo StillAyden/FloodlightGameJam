@@ -14,24 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TaskSet
   numberOfTasks: 3
   tasks:
-  - taskType: 0
+  - taskType: 1
     interactionType: 2
     headerOrTitle: 
     text: 
     clip: {fileID: 0}
-    subDialogues: {fileID: 0}
+    subDialogues: {fileID: 11400000, guid: 7f5685f32164ba44099d5e4389d59cc1, type: 2}
     completed: 0
   - taskType: 0
     interactionType: 2
     headerOrTitle: 
     text: 
     clip: {fileID: 0}
-    subDialogues: {fileID: 0}
+    subDialogues: {fileID: 11400000, guid: 829cb06e9b3f9cf44b52ae0598160a09, type: 2}
     completed: 0
   - taskType: 0
     interactionType: 2
     headerOrTitle: 
     text: 
     clip: {fileID: 0}
-    subDialogues: {fileID: 0}
+    subDialogues: {fileID: 11400000, guid: 2b9ac8af609de6845b2d119ffbd61815, type: 2}
     completed: 0

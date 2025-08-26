@@ -10,7 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Task_Which Act_3
+  m_Name: Task_Which Act_4
   m_EditorClassIdentifier: Assembly-CSharp::TaskSet
-  numberOfTasks: 0
-  tasks: []
+  numberOfTasks: 1
+  tasks:
+  - taskType: 0
+    interactionType: 2
+    headerOrTitle: 
+    text: 
+    clip: {fileID: 0}
+    subDialogues: {fileID: 0}
+    completed: 0

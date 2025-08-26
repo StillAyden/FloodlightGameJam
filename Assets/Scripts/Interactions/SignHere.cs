@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SignHere : MonoBehaviour, IInteractable
 {
-    [SerializeField] DayNightManager _dayNightManager;
+    [SerializeField] TaskManager _dayNightManager;
 
     [Header("Sounds")]
     [SerializeField] AudioSource _audioSource;
@@ -16,7 +16,7 @@ public class SignHere : MonoBehaviour, IInteractable
 
     private void Start()
     {
-        _dayNightManager = GameObject.Find("Day/Night Manager").GetComponent<DayNightManager>();
+        _dayNightManager = GameObject.Find("Task Manager").GetComponent<TaskManager>();
     }
     public void interact()
     {

@@ -24,7 +24,7 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] int currentIndex = -1;
     Coroutine textGenRoutine = null;
 
-    public void TriggerDialogueSequence(DialogueSequence_SO playDialogue, AudioClip playAudio, GameObject _clickedObject) //(int dialogueId, GameObject _clickedObject) //the GameObject was added to get the interface of IEndDialogue
+    public void TriggerDialogueSequence(DialogueSequence_SO playDialogue, GameObject _clickedObject) //AudioClip playAudio, //(int dialogueId, GameObject _clickedObject) //the GameObject was added to get the interface of IEndDialogue
     {
         //Reset and display dialogue
         currentIndex = -1;
@@ -34,7 +34,7 @@ public class DialogueSystem : MonoBehaviour
         canvasDialogue.gameObject.SetActive(true);
         dialogueSequences.Clear();
         dialogueSequences.Add(playDialogue);
-        AudioSource.clip = playAudio;
+        //AudioSource.clip = playAudio;
         //Add any Preparations for Dialogue here e.g. Cinematic Bars, etc.
         _currentObject = _clickedObject; //the GameObject was added to get the interface of IEndDialogue
 
