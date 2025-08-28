@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
@@ -21,6 +22,10 @@ public class TaskManager: MonoBehaviour
     [Header("Sus Task/s")]
     [SerializeField] List<int> _susTasksValue = new List<int>();
 
+    [Header("Unlock through Progress")]
+    [SerializeField] Computer _unlockComputer;
+    [SerializeField] Phone _unlockPhone;
+    [SerializeField] Document _unlockDocument;
     //get reference canInteract on whatever interactive scripts
     //turn to true once a specifc task is activated
 
@@ -35,17 +40,23 @@ public class TaskManager: MonoBehaviour
         currentDay = 0;
         getNumberOfTasks = _actsOrChapters[currentDay].numberOfTasks;
         //taskCompleted();
-        //send the task to the relevant interactions that causes it, such as add an email, add a document, add a voicemail
+      
+        _unlockPhone.enabled = true;
         getTasks();
     }
 
+    private void Update()
+    {
+        checkSubPhoneTasks();
+    }
     public void getTasks()
     {
         for (int i = 0; i < getNumberOfTasks; i++)
         {
             var task = _actsOrChapters[currentDay].tasks[i];
             //Debug.Log("Task has added: "+ task.interactionType);
-
+            task.completed = false;
+            _actsOrChapters[currentDay].tasks[i] = task;
             // switch based on InteractionType
             switch (task.interactionType)
             {
@@ -109,28 +120,114 @@ public class TaskManager: MonoBehaviour
         }
     }
 
+    //might change the logic after the game jam is completed to make this better
     public void taskCompleted(int whichTaskCompleted)
     {
-        var task = _actsOrChapters[currentDay].tasks[whichTaskCompleted];
+        tasksCompleted = true;
+        TaskData task = _actsOrChapters[currentDay].tasks[whichTaskCompleted];
         task.completed = true;
-        for (int i = 0; i < getNumberOfTasks; i++)
+        _actsOrChapters[currentDay].tasks[whichTaskCompleted] = task;
+
+        Debug.Log("Is this task completed: " + task.completed);
+        //send the task to the relevant interactions that causes it, such as add an email, add a document, add a voicemail
+        for (int i = 0; i < _actsOrChapters[currentDay].tasks.Count; i++)
         {
-            if (_actsOrChapters[currentDay].tasks[i].completed == true)
-            {
-                //change new day
-                tasksCompleted = true;
-                nextDay();
-            }
-            else
+            if (!_actsOrChapters[currentDay].tasks[i].completed) // if any task is not completed
             {
                 tasksCompleted = false;
+                break; // no need to check further
             }
         }
 
-        //activate a SUS task based on certain scenarios
+        //checkSubPhoneTasks();
+        if (susTaskInProgress == true)
+        {
+            susTaskInProgress = false;
+            susTaskIndex++;
+        }
 
+        if (tasksCompleted == true)
+        {
+            // change new day
+            nextDay();
+        }
     }
 
+    public void checkToUnlock()
+    {
+        //switch on certain interactions
+        switch (currentDay)
+        {
+            case 0:
+                //check until this task is completed to unlock
+                //enable phone
+
+                break;
+            case 1:
+                //check until this task is completed to unlock
+                _unlockDocument.enabled = true;
+                break;
+            case 2:
+                //check until this task is completed to unlock
+                //after the button dial_01 to call technician 
+                //computer unlocks
+                _unlockDocument.enabled = true;
+                //sends an email
+                break;
+            case 3:
+                //check until this task is completed to unlock
+                break;
+        }
+    }
+
+
+    private int susTaskIndex = 0;
+    private bool susTaskInProgress = false;
+    public void checkSubPhoneTasks()
+    {
+        //check if Sub Phone task are completed.
+        bool _allPhoneSubCompleted = true;
+
+        for (int i = 0; i < _actsOrChapters[currentDay].tasks.Count; i++)
+        {
+            var task =_actsOrChapters[currentDay].tasks[i];
+            if (task.interactionType == InteractionType.RingPhone && task.taskType == TaskType.Sub)
+            {
+                // If the task is not completed or phone has been picked up, mark as not completed
+                if (!task.completed || phoneManager._pickedUp == true)
+                {
+                    _allPhoneSubCompleted = false;
+                    break; // no need to check further
+                }
+            }
+            
+        }
+        Debug.Log("Subtasks completed? " + _allPhoneSubCompleted + " | Phone picked up? " + phoneManager._pickedUp);
+
+        //this checks the sus tasks for the phone
+        int currentSusTask = -1;
+        if (_allPhoneSubCompleted && !phoneManager._pickedUp)
+        {
+            // Stop if out of range
+            if (susTaskIndex >= _susTasksValue.Count)
+                return;
+
+            int taskIndex = _susTasksValue[susTaskIndex];
+            var task = _actsOrChapters[currentDay].tasks[taskIndex];
+
+            if (!task.completed && !susTaskInProgress)
+            {
+                currentSusTask = taskIndex;
+                Debug.Log("Start this Sus Task: " + taskIndex);
+
+                phoneManager.SetphoneTasks(task.subDialogues, taskIndex);
+                phoneManager.RingPhone();
+                susTaskInProgress = true;
+                // move to next entry for the next time
+                //susTaskIndex++;
+            }
+        }
+    }
     public void nextDay()
     {
         currentDay++;

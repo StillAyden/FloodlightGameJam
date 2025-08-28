@@ -87,6 +87,15 @@ public class DialogueSystem : MonoBehaviour
             if (!AudioSource.isPlaying)
             {
                 StartDialogue(); //StartDialogue(0);
+                //hide if the dialogue mentions a button to be pressed 
+                if (dialogueText.text.Contains("PRESS"))
+                {
+                    // Hide the dialogue canvas
+                    canvasDialogue.gameObject.SetActive(false);
+
+                    //// Show the button
+                    //canvasDialogue.gameObject.SetActive(true);
+                }
                 Debug.Log("Next Line");
             }
            

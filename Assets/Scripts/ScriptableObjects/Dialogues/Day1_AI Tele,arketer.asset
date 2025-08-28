@@ -21,7 +21,7 @@ MonoBehaviour:
       zero\u2026 zero\u2026 zero\u2026"
     clip: {fileID: 8300000, guid: cbbc120450c87024bbe4978fc58349e2, type: 3}
   - name: 'AI TELEMARKETER '
-    text: to claim this prize please press one.
+    text: to claim this prize please PRESS one.
     clip: {fileID: 8300000, guid: cbbc120450c87024bbe4978fc58349e2, type: 3}
   - name: 'AI TELEMARKETER '
     text: "To complete the prize claim procedure, please fax your identity card to

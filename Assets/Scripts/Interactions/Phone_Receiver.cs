@@ -9,7 +9,7 @@ public class Phone_Receiver : MonoBehaviour, IInteractable, IEndDialogie
     [SerializeField] PlayerMovement _playerMovement;
     [SerializeField] TaskManager _dayNightManager;
     [SerializeField] GoBackIntToChar _goBack;
-    [SerializeField] bool _pickedUp = false;
+    public bool _pickedUp = false;
 
     [Header("Sounds")]
     [SerializeField] AudioSource AudioSource;
@@ -49,11 +49,11 @@ public class Phone_Receiver : MonoBehaviour, IInteractable, IEndDialogie
         if (voiceMailDialogue.Count > 0)
         {
             this.GetComponent<Collider>().enabled = true;
-            _dayNightManager.taskCompleted(taskNumber[0]);
+            //_dayNightManager.taskCompleted(taskNumber[0]);
             _dialogueSystem.TriggerDialogueSequence(voiceMailDialogue[0], this.gameObject);//,voiceMailClip[0]
             //voiceMailClip.Remove(voiceMailClip[0]);
-            voiceMailDialogue.Remove(voiceMailDialogue[0]);
-            taskNumber.Remove(taskNumber[0]); 
+            //voiceMailDialogue.Remove(voiceMailDialogue[0]);
+            //taskNumber.Remove(taskNumber[0]); 
         }
         else
         {
@@ -90,6 +90,9 @@ public class Phone_Receiver : MonoBehaviour, IInteractable, IEndDialogie
         Cursor.visible = false;
         PutDown();
         _pickedUp = false;
+        _dayNightManager.taskCompleted(taskNumber[0]);
+        voiceMailDialogue.Remove(voiceMailDialogue[0]);
+        taskNumber.Remove(taskNumber[0]);
     }
 
     public void RingPhone() //maybe something can trigger the ringing from something
