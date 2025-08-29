@@ -36,7 +36,10 @@ public class DialogueSystem : MonoBehaviour
         dialogueText.text = "";
         speakerName.text = "";
 
-        canvasDialogue.gameObject.SetActive(true);
+        //canvasDialogue.gameObject.SetActive(false);
+        canvasDialogue.GetComponent<CanvasGroup>().alpha = 1;
+        canvasDialogue.GetComponent<CanvasGroup>().interactable = true;
+        canvasDialogue.GetComponent<CanvasGroup>().blocksRaycasts = true;
         dialogueSequences.Clear();
         dialogueSequences.Add(playDialogue);
         //AudioSource.clip = playAudio;
@@ -72,7 +75,10 @@ public class DialogueSystem : MonoBehaviour
 
     public void SkipDialogueScene()
     {
-        canvasDialogue.gameObject.SetActive(false);
+        //canvasDialogue.gameObject.SetActive(false);
+        canvasDialogue.GetComponent<CanvasGroup>().alpha = 0;
+        canvasDialogue.GetComponent<CanvasGroup>().interactable = false;
+        canvasDialogue.GetComponent<CanvasGroup>().blocksRaycasts = false;
 
         currentIndex = -1;
         dialogueText.text = "";
@@ -159,10 +165,13 @@ public class DialogueSystem : MonoBehaviour
             }
         }
 
-     
-            canvasDialogue.gameObject.SetActive(false);
 
-            _enableMovement.enabled = true;
+        //canvasDialogue.gameObject.SetActive(false);
+        canvasDialogue.GetComponent<CanvasGroup>().alpha = 0;
+        canvasDialogue.GetComponent<CanvasGroup>().interactable = false;
+        canvasDialogue.GetComponent<CanvasGroup>().blocksRaycasts = false;
+
+        _enableMovement.enabled = true;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             System.Text.RegularExpressions.Match match = Regex.Match(dialogueText.text, @"PRESS\s+(\d+)");
@@ -222,7 +231,6 @@ public class DialogueSystem : MonoBehaviour
                     break;
 
             }
-        StopCoroutine(waitTileAudioIsFinised());
     }
     private void OnDestroy()
     {

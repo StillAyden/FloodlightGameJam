@@ -109,7 +109,7 @@ public class Phone_Receiver : MonoBehaviour, IInteractable, IEndDialogie
 
     public void PutDown()
     {
-        AudioSource.clip = _audioPickUp;
+        AudioSource.clip = _audioPutDown;
         AudioSource.Play();
     }
 

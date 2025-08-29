@@ -18,13 +18,13 @@ MonoBehaviour:
     interactionType: 2
     headerOrTitle: 
     text: 
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: cbbc120450c87024bbe4978fc58349e2, type: 3}
     subDialogues: {fileID: 0}
     completed: 0
   - taskType: 1
     interactionType: 0
-    headerOrTitle: 
-    text: 
+    headerOrTitle: Testing Header
+    text: We are signing this to get new stuff for the offices to raise moral
     clip: {fileID: 0}
     subDialogues: {fileID: 0}
     completed: 0

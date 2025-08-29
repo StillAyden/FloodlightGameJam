@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
@@ -50,7 +51,9 @@ public class TaskManager: MonoBehaviour
 
     private void Update()
     {
-        checkSubPhoneTasks();
+        //checkSubPhoneTasks();
+        //checkSubDocumentTasks();
+        CheckAllSubTasks();
     }
     public void getTasks()
     {
@@ -142,7 +145,6 @@ public class TaskManager: MonoBehaviour
             }
         }
 
-        //checkSubPhoneTasks();
         if (susTaskInProgress == true)
         {
             susTaskInProgress = false;
@@ -174,7 +176,11 @@ public class TaskManager: MonoBehaviour
                 //check until this task is completed to unlock
                 //after the button dial_01 to call technician 
                 //computer unlocks
-                _unlockDocument.enabled = true;
+                if (_actsOrChapters[2].tasks[0].completed == true)//Based on Narrative Script
+                {
+                    _unlockComputer.enabled = true;
+                }
+                
                 //sends an email
                 break;
             case 3:
@@ -186,51 +192,227 @@ public class TaskManager: MonoBehaviour
 
     private int susTaskIndex = 0;
     private bool susTaskInProgress = false;
-    public void checkSubPhoneTasks()
+
+    public void CheckAllSubTasks()
     {
-        //check if Sub Phone task are completed.
-        bool _allPhoneSubCompleted = true;
+        // 1. Check if ALL subtasks are completed (regardless of type)
+        bool allSubsCompleted = true;
 
         for (int i = 0; i < _actsOrChapters[currentDay].tasks.Count; i++)
         {
-            var task =_actsOrChapters[currentDay].tasks[i];
-            if (task.interactionType == InteractionType.RingPhone && task.taskType == TaskType.Sub)
+            var task = _actsOrChapters[currentDay].tasks[i];
+
+            if (task.taskType == TaskType.Sub) // only care about subtasks
             {
-                // If the task is not completed or phone has been picked up, mark as not completed
-                if (!task.completed || phoneManager._pickedUp == true)
+                if (!task.completed) // if ANY subtask is not done
                 {
-                    _allPhoneSubCompleted = false;
-                    break; // no need to check further
+                    allSubsCompleted = false;
+                    break;
                 }
             }
-            
         }
-        Debug.Log("Subtasks completed? " + _allPhoneSubCompleted + " | Phone picked up? " + phoneManager._pickedUp);
 
-        //this checks the sus tasks for the phone
-        int currentSusTask = -1;
-        if (_allPhoneSubCompleted && !phoneManager._pickedUp)
+        Debug.Log("All Subtasks completed? " + allSubsCompleted);
+
+        // 2. If all subtasks are done, trigger first Sus task
+        if (allSubsCompleted && !susTaskInProgress)
         {
-            // Stop if out of range
             if (susTaskIndex >= _susTasksValue.Count)
-                return;
+                return; // no more sus tasks available
 
             int taskIndex = _susTasksValue[susTaskIndex];
-            var task = _actsOrChapters[currentDay].tasks[taskIndex];
+            var susTask = _actsOrChapters[currentDay].tasks[taskIndex];
 
-            if (!task.completed && !susTaskInProgress)
+            if (!susTask.completed)
             {
-                currentSusTask = taskIndex;
-                Debug.Log("Start this Sus Task: " + taskIndex);
+                Debug.Log("Starting Sus Task: " + taskIndex);
 
-                phoneManager.SetphoneTasks(task.subDialogues, taskIndex);
-                phoneManager.RingPhone();
+                switch (susTask.interactionType)
+                {
+                    case InteractionType.RingPhone:
+                        // Optional safeguard: don’t ring if already picked up
+                        if (!phoneManager._pickedUp)
+                        {
+                            phoneManager.SetphoneTasks(susTask.subDialogues, taskIndex);
+                            phoneManager.RingPhone();
+                        }
+                        break;
+
+                    case InteractionType.Document:
+                        documentManager.SetdocumentTasks(susTask.headerOrTitle, susTask.text, taskIndex);
+                        break;
+
+                        // add more cases here if you have more interaction types
+                }
+
                 susTaskInProgress = true;
-                // move to next entry for the next time
-                //susTaskIndex++;
             }
         }
     }
+
+    //public void checkSubPhoneTasks()
+    //{
+    //    //check if Sub Phone task are completed.
+    //    bool _allPhoneSubCompleted = true;
+
+    //    for (int i = 0; i < _actsOrChapters[currentDay].tasks.Count; i++)
+    //    {
+    //        var task =_actsOrChapters[currentDay].tasks[i];
+    //        if (task.interactionType == InteractionType.RingPhone && task.taskType == TaskType.Sub)
+    //        {
+    //            // If the task is not completed or phone has been picked up, mark as not completed
+    //            if (!task.completed || phoneManager._pickedUp == true)
+    //            {
+    //                _allPhoneSubCompleted = false;
+    //                break; // no need to check further
+    //            }
+    //        }
+
+    //    }
+    //    Debug.Log("Subtasks Phone completed? " + _allPhoneSubCompleted + " | Phone picked up? " + phoneManager._pickedUp);
+
+    //    ////this checks the sus tasks for the phone
+    //    int currentSusTask = -1;
+    //    if (_allPhoneSubCompleted && !phoneManager._pickedUp)
+    //    {
+    //        // Stop if out of range
+    //        if (susTaskIndex >= _susTasksValue.Count)
+    //            return;
+
+    //        int taskIndex = _susTasksValue[susTaskIndex];
+    //        var task = _actsOrChapters[currentDay].tasks[taskIndex];
+
+    //        if (!task.completed && !susTaskInProgress)
+    //        {
+    //            currentSusTask = taskIndex;
+    //            Debug.Log("Start this Sus Task: " + taskIndex);
+
+    //            phoneManager.SetphoneTasks(task.subDialogues, taskIndex);
+    //            phoneManager.RingPhone();
+    //            susTaskInProgress = true;
+    //            // move to next entry for the next time
+    //            //susTaskIndex++;
+    //        }
+
+
+    //    }
+
+    //    //if (susTaskInProgress)
+    //    //    return; // don’t start a new Sus task while one is in progress
+
+    //    //// Loop through your sus task indices
+    //    //for (int i = susTaskIndex; i < _susTasksValue.Count; i++)
+    //    //{
+    //    //    int taskIndex = _susTasksValue[i];
+    //    //    var task = _actsOrChapters[currentDay].tasks[taskIndex];
+
+    //    //    if (!task.completed)
+    //    //    {
+    //    //        // Handle by type
+    //    //        if (task.interactionType == InteractionType.RingPhone)
+    //    //        {
+    //    //            // Skip if phone already picked up
+    //    //            if (phoneManager._pickedUp)
+    //    //                return;
+
+    //    //            Debug.Log("Starting Phone Sus Task: " + taskIndex);
+    //    //            phoneManager.SetphoneTasks(task.subDialogues, taskIndex);
+    //    //            phoneManager.RingPhone();
+    //    //        }
+    //    //        else if (task.interactionType == InteractionType.Document)
+    //    //        {
+    //    //            Debug.Log("Starting Document Sus Task: " + taskIndex);
+    //    //            documentManager.SetdocumentTasks(task.headerOrTitle, task.text, taskIndex);
+    //    //        }
+
+    //    //        susTaskInProgress = true;
+    //    //        // susTaskIndex is incremented only after taskCompleted()
+    //    //        return;
+    //    //    }
+    //    //}
+    //}
+
+    //public void checkSubDocumentTasks()
+    //{
+    //    //check if Sub Phone task are completed.
+    //    bool _allDocumentSubCompleted = true;
+
+    //    for (int i = 0; i < _actsOrChapters[currentDay].tasks.Count; i++)
+    //    {
+    //        var task = _actsOrChapters[currentDay].tasks[i];
+    //        if (task.interactionType == InteractionType.Document && task.taskType == TaskType.Sub)
+    //        {
+    //            // If the task is not completed, mark as not completed
+    //            if (!task.completed)
+    //            {
+    //                _allDocumentSubCompleted = false;
+    //                break; // no need to check further
+    //            }
+    //        }
+
+    //    }
+    //    Debug.Log("Subtasks Document completed? " + _allDocumentSubCompleted);
+
+    //    ////this checks the sus tasks for the phone
+    //    int currentSusTask = -1;
+    //    if (_allDocumentSubCompleted)
+    //    {
+    //        // Stop if out of range
+    //        if (susTaskIndex >= _susTasksValue.Count)
+    //            return;
+
+    //        int taskIndex = _susTasksValue[susTaskIndex];
+    //        var task = _actsOrChapters[currentDay].tasks[taskIndex];
+
+    //        if (!task.completed && !susTaskInProgress)
+    //        {
+    //            currentSusTask = taskIndex;
+    //            Debug.Log("Start this Sus Task: " + taskIndex);
+
+    //            documentManager.SetdocumentTasks(task.headerOrTitle, task.text, taskIndex);
+    //            susTaskInProgress = true;
+    //            // move to next entry for the next time
+    //            //susTaskIndex++;
+    //        }
+
+
+    //    }
+
+    //    //if (susTaskInProgress)
+    //    //    return; // don’t start a new Sus task while one is in progress
+
+    //    //// Loop through your sus task indices
+    //    //for (int i = susTaskIndex; i < _susTasksValue.Count; i++)
+    //    //{
+    //    //    int taskIndex = _susTasksValue[i];
+    //    //    var task = _actsOrChapters[currentDay].tasks[taskIndex];
+
+    //    //    if (!task.completed)
+    //    //    {
+    //    //        // Handle by type
+    //    //        if (task.interactionType == InteractionType.RingPhone)
+    //    //        {
+    //    //            // Skip if phone already picked up
+    //    //            if (phoneManager._pickedUp)
+    //    //                return;
+
+    //    //            Debug.Log("Starting Phone Sus Task: " + taskIndex);
+    //    //            phoneManager.SetphoneTasks(task.subDialogues, taskIndex);
+    //    //            phoneManager.RingPhone();
+    //    //        }
+    //    //        else if (task.interactionType == InteractionType.Document)
+    //    //        {
+    //    //            Debug.Log("Starting Document Sus Task: " + taskIndex);
+    //    //            documentManager.SetdocumentTasks(task.headerOrTitle, task.text, taskIndex);
+    //    //        }
+
+    //    //        susTaskInProgress = true;
+    //    //        // susTaskIndex is incremented only after taskCompleted()
+    //    //        return;
+    //    //    }
+    //    //}
+    //}
+
     public void nextDay()
     {
         currentDay++;
@@ -256,7 +438,8 @@ public class TaskManager: MonoBehaviour
     public void FadeOut()
     {
         _gobacktoChar.exitInteraction();
+        //nextDay();
         //getTasks();
-        
+
     }
 }

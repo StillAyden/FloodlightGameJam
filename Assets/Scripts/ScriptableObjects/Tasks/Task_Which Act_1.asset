@@ -34,4 +34,4 @@ MonoBehaviour:
     text: 
     clip: {fileID: 0}
     subDialogues: {fileID: 11400000, guid: 2b9ac8af609de6845b2d119ffbd61815, type: 2}
-    completed: 0
+    completed: 1

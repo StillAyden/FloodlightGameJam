@@ -37,7 +37,10 @@ public class ButtonManager : MonoBehaviour
             {
                 _pressSpecificButton = false;
                 _pressSpecificButtonIndex = -1;
-                _dialogueStuff.SetActive(true);
+                //_dialogueStuff.SetActive(true);
+                _dialogueStuff.GetComponent<CanvasGroup>().alpha = 1;
+                _dialogueStuff.GetComponent<CanvasGroup>().interactable = true;
+                _dialogueStuff.GetComponent<CanvasGroup>().blocksRaycasts = true;
                 _enableMovement.enabled = false;
                 Cursor.lockState = CursorLockMode.Confined;
                 Cursor.visible = true;
