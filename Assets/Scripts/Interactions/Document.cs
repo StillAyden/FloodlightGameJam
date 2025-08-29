@@ -22,6 +22,8 @@ public class Document : MonoBehaviour, IInteractable
         _switchInteractions = GameObject.Find("ManagerSwitchInteractions").GetComponent<ManagerSwitchInteractions>();
         _documentSign = GameObject.Find("SignHere");
         _documentSign.GetComponent<Collider>().enabled = false;
+        this.GetComponent<Collider>().enabled = false;
+        this.enabled = false;
     }
     public void interact()
     {

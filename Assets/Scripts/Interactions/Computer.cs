@@ -23,6 +23,8 @@ public class Computer : MonoBehaviour, IInteractable
         _switchInteractions = GameObject.Find("ManagerSwitchInteractions").GetComponent<ManagerSwitchInteractions>();
         _screen = GameObject.Find("Screen");
         _screen.GetComponent<Collider>().enabled = false;
+        this.GetComponent<Collider>().enabled = false;
+        this.enabled = false;
     }
     public void interact()
     {

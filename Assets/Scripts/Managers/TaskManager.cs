@@ -255,7 +255,8 @@ public class TaskManager: MonoBehaviour
 
     public void FadeOut()
     {
-        getTasks();
         _gobacktoChar.exitInteraction();
+        //getTasks();
+        
     }
 }
