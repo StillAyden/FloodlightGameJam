@@ -5,6 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.InputSystem.InputControlScheme.MatchResult;
 
 public class DialogueSystem : MonoBehaviour
 {
@@ -90,14 +91,14 @@ public class DialogueSystem : MonoBehaviour
         {
             if (!AudioSource.isPlaying)
             {
-                StartDialogue(); 
-                
+                StartDialogue();
+
                 //StartDialogue(0);
-                                 //hide if the dialogue mentions a button to be pressed 
-                                 //if (dialogueText.text.Contains("PRESS"))
-                                 //{
-                                 //    // Hide the dialogue canvas
-                                 //    canvasDialogue.gameObject.SetActive(false);
+                //hide if the dialogue mentions a button to be pressed 
+                //if (dialogueText.text.Contains("PRESS"))
+                //{
+                //    // Hide the dialogue canvas
+                //    canvasDialogue.gameObject.SetActive(false);
 
                 //    switch (dialogueText.text)
                 //    {
@@ -126,74 +127,15 @@ public class DialogueSystem : MonoBehaviour
                 //}
 
                 // Look for "PRESS <number>"
-                Match match = Regex.Match(dialogueText.text, @"PRESS\s+(\d+)"); //this is new to me so yeah
 
+                //wait until audio is finished playing
+                System.Text.RegularExpressions.Match match = Regex.Match(dialogueText.text, @"PRESS\s+(\d+)"); //this is new to me so yeah
+                Debug.Log("What is the currently:" +match);
                 if (match.Success)
                 {
-                    canvasDialogue.gameObject.SetActive(false);
-
-                    _enableMovement.enabled = true;
-                    Cursor.lockState = CursorLockMode.Locked;
-                    Cursor.visible = false;
-
-                    int pressNumber = int.Parse(match.Groups[1].Value);
-
-                    switch (pressNumber)
-                    {
-                        case 0:
-                            Debug.Log("Action for PRESS 0");
-                            _setItTrue._pressSpecificButton = true;
-                            _setItTrue._pressSpecificButtonIndex = 0;
-                            break;
-                        case 1:
-                            Debug.Log("Action for PRESS 1");
-                            _setItTrue._pressSpecificButton = true;
-                            _setItTrue._pressSpecificButtonIndex = 1;
-                            break;
-                        case 2:
-                            Debug.Log("Action for PRESS 2");
-                            _setItTrue._pressSpecificButton = true;
-                            _setItTrue._pressSpecificButtonIndex = 2;
-                            break;
-                        case 3:
-                            Debug.Log("Action for PRESS 3");
-                            _setItTrue._pressSpecificButton = true;
-                            _setItTrue._pressSpecificButtonIndex = 3;
-                            break;
-                        case 4:
-                            Debug.Log("Action for PRESS 4");
-                            _setItTrue._pressSpecificButton = true;
-                            _setItTrue._pressSpecificButtonIndex = 4;
-                            break;
-                        case 5:
-                            Debug.Log("Action for PRESS 5");
-                            _setItTrue._pressSpecificButton = true;
-                            _setItTrue._pressSpecificButtonIndex = 5;
-                            break;
-                        case 6:
-                            Debug.Log("Action for PRESS 6");
-                            _setItTrue._pressSpecificButton = true;
-                            _setItTrue._pressSpecificButtonIndex = 6;
-                            break;
-                        case 7:
-                            Debug.Log("Action for PRESS 7");
-                            _setItTrue._pressSpecificButton = true;
-                            _setItTrue._pressSpecificButtonIndex = 7;
-                            break;
-                        case 8:
-                            Debug.Log("Action for PRESS 8");
-                            _setItTrue._pressSpecificButton = true;
-                            _setItTrue._pressSpecificButtonIndex = 8;
-                            break;
-                        case 9:
-                            Debug.Log("Action for PRESS 9");
-                            _setItTrue._pressSpecificButton = true;
-                            _setItTrue._pressSpecificButtonIndex = 9;
-                            break;
-
-
-                    }
+                   StartCoroutine(waitTileAudioIsFinised());
                 }
+                
 
                 Debug.Log("Next Line");
             }
@@ -205,6 +147,83 @@ public class DialogueSystem : MonoBehaviour
         }
     }
 
+
+    IEnumerator waitTileAudioIsFinised()
+    {
+        // Wait until the audio is done playing
+        if (AudioSource != null)
+        {
+            while (AudioSource.isPlaying)
+            {
+                yield return null; // wait for the next frame and check again
+            }
+        }
+
+     
+            canvasDialogue.gameObject.SetActive(false);
+
+            _enableMovement.enabled = true;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            System.Text.RegularExpressions.Match match = Regex.Match(dialogueText.text, @"PRESS\s+(\d+)");
+            int pressNumber = int.Parse(match.Groups[1].Value);
+
+            switch (pressNumber)
+            {
+                case 0:
+                    Debug.Log("Action for PRESS 0");
+                    _setItTrue._pressSpecificButton = true;
+                    _setItTrue._pressSpecificButtonIndex = 0;
+                    break;
+                case 1:
+                    Debug.Log("Action for PRESS 1");
+                    _setItTrue._pressSpecificButton = true;
+                    _setItTrue._pressSpecificButtonIndex = 1;
+                    break;
+                case 2:
+                    Debug.Log("Action for PRESS 2");
+                    _setItTrue._pressSpecificButton = true;
+                    _setItTrue._pressSpecificButtonIndex = 2;
+                    break;
+                case 3:
+                    Debug.Log("Action for PRESS 3");
+                    _setItTrue._pressSpecificButton = true;
+                    _setItTrue._pressSpecificButtonIndex = 3;
+                    break;
+                case 4:
+                    Debug.Log("Action for PRESS 4");
+                    _setItTrue._pressSpecificButton = true;
+                    _setItTrue._pressSpecificButtonIndex = 4;
+                    break;
+                case 5:
+                    Debug.Log("Action for PRESS 5");
+                    _setItTrue._pressSpecificButton = true;
+                    _setItTrue._pressSpecificButtonIndex = 5;
+                    break;
+                case 6:
+                    Debug.Log("Action for PRESS 6");
+                    _setItTrue._pressSpecificButton = true;
+                    _setItTrue._pressSpecificButtonIndex = 6;
+                    break;
+                case 7:
+                    Debug.Log("Action for PRESS 7");
+                    _setItTrue._pressSpecificButton = true;
+                    _setItTrue._pressSpecificButtonIndex = 7;
+                    break;
+                case 8:
+                    Debug.Log("Action for PRESS 8");
+                    _setItTrue._pressSpecificButton = true;
+                    _setItTrue._pressSpecificButtonIndex = 8;
+                    break;
+                case 9:
+                    Debug.Log("Action for PRESS 9");
+                    _setItTrue._pressSpecificButton = true;
+                    _setItTrue._pressSpecificButtonIndex = 9;
+                    break;
+
+            }
+        StopCoroutine(waitTileAudioIsFinised());
+    }
     private void OnDestroy()
     {
         //InputManager.instance.NextLine -= NextLine;
