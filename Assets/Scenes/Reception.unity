@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 908899}
   - component: {fileID: 908900}
+  - component: {fileID: 908901}
   m_Layer: 0
   m_Name: Buttons
   m_TagString: Untagged
@@ -261,6 +262,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &908901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a03de0dc1d02cb74180f65c88f0827ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pressSpecificButton: 0
+  _pressSpecificButtonIndex: 0
+  currentPhoneNumber: 
+  _dialogueStuff: {fileID: 706499083}
+  _enableMovement: {fileID: 1442510228}
 --- !u!1 &72922043
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,6 +476,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 908900}
   _audioButtonPressed: {fileID: 8300000, guid: 19753d5dc912168499c48cb1484efcc2, type: 3}
+  _buttonManager: {fileID: 0}
 --- !u!54 &134907402
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1449,6 +1468,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 908900}
   _audioButtonPressed: {fileID: 8300000, guid: 19753d5dc912168499c48cb1484efcc2, type: 3}
+  _buttonManager: {fileID: 0}
 --- !u!54 &466969824
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1545,6 +1565,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 908900}
   _audioButtonPressed: {fileID: 8300000, guid: 19753d5dc912168499c48cb1484efcc2, type: 3}
+  _buttonManager: {fileID: 0}
 --- !u!54 &468878119
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1851,6 +1872,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 908900}
   _audioButtonPressed: {fileID: 8300000, guid: 19753d5dc912168499c48cb1484efcc2, type: 3}
+  _buttonManager: {fileID: 0}
 --- !u!54 &581698298
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1947,6 +1969,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 908900}
   _audioButtonPressed: {fileID: 8300000, guid: 19753d5dc912168499c48cb1484efcc2, type: 3}
+  _buttonManager: {fileID: 0}
 --- !u!54 &596752107
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2043,6 +2066,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 908900}
   _audioButtonPressed: {fileID: 8300000, guid: 19753d5dc912168499c48cb1484efcc2, type: 3}
+  _buttonManager: {fileID: 0}
 --- !u!54 &615206942
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2238,6 +2262,8 @@ MonoBehaviour:
   speakerName: {fileID: 142130345}
   dialogueText: {fileID: 1496798721}
   _currentObject: {fileID: 0}
+  _setItTrue: {fileID: 908901}
+  _enableMovement: {fileID: 1442510228}
   currentIndex: -1
 --- !u!4 &648572448
 Transform:
@@ -3082,6 +3108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 908900}
   _audioButtonPressed: {fileID: 8300000, guid: 19753d5dc912168499c48cb1484efcc2, type: 3}
+  _buttonManager: {fileID: 0}
 --- !u!54 &903731730
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3178,6 +3205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 908900}
   _audioButtonPressed: {fileID: 8300000, guid: 19753d5dc912168499c48cb1484efcc2, type: 3}
+  _buttonManager: {fileID: 0}
 --- !u!54 &921358729
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3589,6 +3617,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 908900}
   _audioButtonPressed: {fileID: 8300000, guid: 19753d5dc912168499c48cb1484efcc2, type: 3}
+  _buttonManager: {fileID: 0}
 --- !u!54 &1101185333
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3685,6 +3714,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 908900}
   _audioButtonPressed: {fileID: 8300000, guid: 19753d5dc912168499c48cb1484efcc2, type: 3}
+  _buttonManager: {fileID: 0}
 --- !u!54 &1164833254
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4035,6 +4065,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 908900}
   _audioButtonPressed: {fileID: 8300000, guid: 19753d5dc912168499c48cb1484efcc2, type: 3}
+  _buttonManager: {fileID: 0}
 --- !u!54 &1286182370
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5166,6 +5197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 908900}
   _audioButtonPressed: {fileID: 8300000, guid: 19753d5dc912168499c48cb1484efcc2, type: 3}
+  _buttonManager: {fileID: 0}
 --- !u!54 &1765497757
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5521,6 +5553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 908900}
   _audioButtonPressed: {fileID: 8300000, guid: 19753d5dc912168499c48cb1484efcc2, type: 3}
+  _buttonManager: {fileID: 0}
 --- !u!54 &2147346501
 Rigidbody:
   m_ObjectHideFlags: 0

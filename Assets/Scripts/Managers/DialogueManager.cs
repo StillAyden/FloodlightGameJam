@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -19,6 +20,9 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] TMP_Text dialogueText;
     [SerializeField] GameObject _currentObject; //the GameObject was added to get the interface of IEndDialogue
 
+    [Header("Press what?")]
+    [SerializeField] ButtonManager _setItTrue;
+    [SerializeField] PlayerMovement _enableMovement;
 
     [Header("Control variables")]
     [SerializeField] int currentIndex = -1;
@@ -86,16 +90,111 @@ public class DialogueSystem : MonoBehaviour
         {
             if (!AudioSource.isPlaying)
             {
-                StartDialogue(); //StartDialogue(0);
-                //hide if the dialogue mentions a button to be pressed 
-                if (dialogueText.text.Contains("PRESS"))
+                StartDialogue(); 
+                
+                //StartDialogue(0);
+                                 //hide if the dialogue mentions a button to be pressed 
+                                 //if (dialogueText.text.Contains("PRESS"))
+                                 //{
+                                 //    // Hide the dialogue canvas
+                                 //    canvasDialogue.gameObject.SetActive(false);
+
+                //    switch (dialogueText.text)
+                //    {
+                //        case "PRESS 1":
+                //            Debug.Log("Pressed 1 triggered");
+                //            // TODO: Put logic for PRESS 1 here
+                //            break;
+
+                //        case "PRESS 2":
+                //            Debug.Log("Pressed 2 triggered");
+                //            // TODO: Put logic for PRESS 2 here
+                //            break;
+
+                //        case "PRESS 3":
+                //            Debug.Log("Pressed 3 triggered");
+                //            // TODO: Put logic for PRESS 3 here
+                //            break;
+
+                //        default:
+                //            Debug.Log("Unrecognized PRESS command: " + dialogueText.text);
+                //            break;
+                //    }
+
+                //    //// Show the button
+                //    //canvasDialogue.gameObject.SetActive(true);
+                //}
+
+                // Look for "PRESS <number>"
+                Match match = Regex.Match(dialogueText.text, @"PRESS\s+(\d+)"); //this is new to me so yeah
+
+                if (match.Success)
                 {
-                    // Hide the dialogue canvas
                     canvasDialogue.gameObject.SetActive(false);
 
-                    //// Show the button
-                    //canvasDialogue.gameObject.SetActive(true);
+                    _enableMovement.enabled = true;
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+
+                    int pressNumber = int.Parse(match.Groups[1].Value);
+
+                    switch (pressNumber)
+                    {
+                        case 0:
+                            Debug.Log("Action for PRESS 0");
+                            _setItTrue._pressSpecificButton = true;
+                            _setItTrue._pressSpecificButtonIndex = 0;
+                            break;
+                        case 1:
+                            Debug.Log("Action for PRESS 1");
+                            _setItTrue._pressSpecificButton = true;
+                            _setItTrue._pressSpecificButtonIndex = 1;
+                            break;
+                        case 2:
+                            Debug.Log("Action for PRESS 2");
+                            _setItTrue._pressSpecificButton = true;
+                            _setItTrue._pressSpecificButtonIndex = 2;
+                            break;
+                        case 3:
+                            Debug.Log("Action for PRESS 3");
+                            _setItTrue._pressSpecificButton = true;
+                            _setItTrue._pressSpecificButtonIndex = 3;
+                            break;
+                        case 4:
+                            Debug.Log("Action for PRESS 4");
+                            _setItTrue._pressSpecificButton = true;
+                            _setItTrue._pressSpecificButtonIndex = 4;
+                            break;
+                        case 5:
+                            Debug.Log("Action for PRESS 5");
+                            _setItTrue._pressSpecificButton = true;
+                            _setItTrue._pressSpecificButtonIndex = 5;
+                            break;
+                        case 6:
+                            Debug.Log("Action for PRESS 6");
+                            _setItTrue._pressSpecificButton = true;
+                            _setItTrue._pressSpecificButtonIndex = 6;
+                            break;
+                        case 7:
+                            Debug.Log("Action for PRESS 7");
+                            _setItTrue._pressSpecificButton = true;
+                            _setItTrue._pressSpecificButtonIndex = 7;
+                            break;
+                        case 8:
+                            Debug.Log("Action for PRESS 8");
+                            _setItTrue._pressSpecificButton = true;
+                            _setItTrue._pressSpecificButtonIndex = 8;
+                            break;
+                        case 9:
+                            Debug.Log("Action for PRESS 9");
+                            _setItTrue._pressSpecificButton = true;
+                            _setItTrue._pressSpecificButtonIndex = 9;
+                            break;
+
+
+                    }
                 }
+
                 Debug.Log("Next Line");
             }
            
