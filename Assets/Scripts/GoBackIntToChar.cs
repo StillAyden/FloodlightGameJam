@@ -20,13 +20,13 @@ public class GoBackIntToChar : MonoBehaviour
 
             if (grandParent.name != "Character")
             {
-                exitPhone();
+                exitInteraction();
             }
 
         }
     }
 
-    public void exitPhone()
+    public void exitInteraction()
     {
         IInteractable interactable = transform.parent.parent.GetComponent<IInteractable>();
         if (interactable != null)

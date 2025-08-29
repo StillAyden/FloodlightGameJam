@@ -15,6 +15,9 @@ public class TaskManager: MonoBehaviour
     [SerializeField] bool tasksCompleted = false;
     [SerializeField] int getNumberOfTasks;
 
+    [SerializeField] GoBackIntToChar _gobacktoChar;
+    [SerializeField] Animator _fadeInOut;
+
     [Header("Send Tasks")]
     [SerializeField] private Phone_Receiver phoneManager;
     [SerializeField] private SignHere documentManager;
@@ -238,13 +241,21 @@ public class TaskManager: MonoBehaviour
         else
         {
             //maybe a dialogue that appears on the screen to say end of the day perhaps?
+            _fadeInOut.SetTrigger("Fade");
+            
             //fadeToBlack
             //show text that says Day: 31 etc
             //fadeIn
             //send the task to the relevant interactions that causes it, such as add an email, add a document, make the phone ring
-            getTasks();
+
 
             //SceneManager.LoadSceneAsync(); //just to load models
         }
+    }
+
+    public void FadeOut()
+    {
+        getTasks();
+        _gobacktoChar.exitInteraction();
     }
 }
