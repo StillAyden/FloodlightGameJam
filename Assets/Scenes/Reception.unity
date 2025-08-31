@@ -279,6 +279,7 @@ MonoBehaviour:
   currentPhoneNumber: 
   _dialogueStuff: {fileID: 706499083}
   _enableMovement: {fileID: 1442510228}
+  _phoneReceiverPickedUp: {fileID: 0}
 --- !u!1 &72922043
 GameObject:
   m_ObjectHideFlags: 0
@@ -2935,13 +2936,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 813914777}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.06648057, y: 0.20269085, z: -0.2756841, w: 0.9372807}
+  m_LocalRotation: {x: 0.13143848, y: 0.18832624, z: -0.01218188, w: 0.9731952}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 13.673, y: 20.69, z: -30.273}
+  m_LocalEulerAnglesHint: {x: 15.095, y: 22.107, z: 1.531}
 --- !u!1 &824792610
 GameObject:
   m_ObjectHideFlags: 0
@@ -3810,12 +3811,12 @@ Transform:
   m_GameObject: {fileID: 1031458464}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.4677199, y: -0.067, z: -3.15627}
+  m_LocalPosition: {x: 1.4677199, y: 0.016, z: -3.15627}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2069017408}
-  m_Father: {fileID: 2048829048}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1072597018
 GameObject:
@@ -6233,6 +6234,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: OfficeTest
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c203b1821c604e14a95ca97f77bf1f48,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3105340386262356961, guid: c203b1821c604e14a95ca97f77bf1f48,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6668,7 +6674,6 @@ Transform:
   - {fileID: 72922048}
   - {fileID: 989600413}
   - {fileID: 1227123832}
-  - {fileID: 1031458465}
   - {fileID: 343665700}
   - {fileID: 1285573024}
   m_Father: {fileID: 0}
@@ -6949,5 +6954,6 @@ SceneRoots:
   - {fileID: 322963262}
   - {fileID: 410564137}
   - {fileID: 746822403}
+  - {fileID: 1031458465}
   - {fileID: 2048829048}
   - {fileID: 1694997058}
