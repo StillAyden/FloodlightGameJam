@@ -306,7 +306,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 72922043}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3edccefdf1bdaf741b7612636dd00504, type: 3}
   m_Name: 
@@ -333,7 +333,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 0.3029527, y: 0.363948, z: 0.33416724}
   m_Center: {x: -0.0013252199, y: 0.010619819, z: -0.06704342}
@@ -1879,6 +1879,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 549417980}
   m_CullTransparentMesh: 1
+--- !u!1 &551091509 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c210fa3af58a78b4fa132005d934d3cf,
+    type: 3}
+  m_PrefabInstance: {fileID: 979786384}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &581698294
 GameObject:
   m_ObjectHideFlags: 0
@@ -3663,6 +3669,10 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c210fa3af58a78b4fa132005d934d3cf,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 979786386}
     - targetCorrespondingSourceObject: {fileID: -5278166820608330550, guid: c210fa3af58a78b4fa132005d934d3cf,
         type: 3}
       insertIndex: -1
@@ -3674,6 +3684,28 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 979786384}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &979786386
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551091509}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 15a5bdab3d1f7b24e961bd30beeebf63, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &989600408
 GameObject:
   m_ObjectHideFlags: 0
@@ -3699,7 +3731,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 989600408}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c5c77f9504a42543a795c25a12fc603, type: 3}
   m_Name: 
@@ -3749,7 +3781,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 0.35634643, y: 0.22014385, z: 0.36158782}
   m_Center: {x: -0.014797658, y: 0.019898195, z: 0.4768422}
@@ -3794,6 +3826,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1072597019}
+  - component: {fileID: 1072597020}
   m_Layer: 0
   m_Name: ScreenUI
   m_TagString: Untagged
@@ -3816,6 +3849,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 256692849}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1072597020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072597018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93cfe15351a1e854497026d0b0ffc35a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pnlLogin: {fileID: 0}
+  pnlDesktop: {fileID: 0}
+  pnlEmail: {fileID: 0}
+  emailTab: {fileID: 0}
+  pnlInbox: {fileID: 0}
+  pnlSent: {fileID: 0}
+  pnlBin: {fileID: 0}
+  WelcomeEmailRecieved: {fileID: 0}
+  BossEmailRecieved: {fileID: 0}
+  EmailSent: {fileID: 0}
+  username: {fileID: 0}
+  password: {fileID: 0}
+  pnlEmailForwardPrompt: {fileID: 0}
+  EmailForwardConfirmed: {fileID: 0}
+  EmailForwardDenied: {fileID: 0}
+  AddressToForward: {fileID: 0}
 --- !u!1 &1087060256
 GameObject:
   m_ObjectHideFlags: 0
@@ -4751,6 +4812,7 @@ MonoBehaviour:
   _audioRinging: {fileID: 8300000, guid: 18b097330ab1d8f43ab2130c6916a058, type: 3}
   _audioPickUp: {fileID: 8300000, guid: 0740cfe483a3a8c4ab6d7c5ce94afb6e, type: 3}
   _audioPutDown: {fileID: 8300000, guid: 178f6a0a8b1462f418847b8bea03eae2, type: 3}
+  _phoneRecevierAnimator: {fileID: 979786386}
   voiceMailDialogue: []
   taskNumber: 
 --- !u!82 &1397923714
