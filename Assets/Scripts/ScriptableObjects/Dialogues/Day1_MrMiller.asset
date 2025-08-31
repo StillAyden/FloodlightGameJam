@@ -15,15 +15,15 @@ MonoBehaviour:
   dialogueLines:
   - name: MR MILLER
     text: "Hopefully you\u2019re done with those purchase orders by now."
-    clip: {fileID: 8300000, guid: d85695d2523f78142a345c7b3f47370a, type: 3}
+    clip: {fileID: 8300000, guid: 334779a772087de44ac612bfa40df284, type: 3}
   - name: MR MILLER
     text: "I\u2019ve got a few clients that need to get on the line with me."
-    clip: {fileID: 8300000, guid: b00917c15b15b5f4d8c4191d47347ce5, type: 3}
+    clip: {fileID: 8300000, guid: 0a05dda1676957c4eb0ecda0095b6e86, type: 3}
   - name: MR MILLER
     text: When that second light on your telephone illuminates, hit the transfer
       button, then I should get the call.
-    clip: {fileID: 8300000, guid: 8257cc6d6229d1f47a05ef786be2b9f4, type: 3}
+    clip: {fileID: 8300000, guid: 0169e5f287274a9429a89b49069a4eac, type: 3}
   - name: MR MILLER
     text: "While you wait for those, maybe give those desk drawers a bit of spring
       cleaning, my last secretary left in a bit of a hurry.\r"
-    clip: {fileID: 8300000, guid: 204263446c3cafd478963421d6392301, type: 3}
+    clip: {fileID: 8300000, guid: 7c8a0ce67f34ed04eb2c4487f8c77c2c, type: 3}
