@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem; // Needed for new Input System
-using static UnityEngine.GraphicsBuffer;
 
 public class PlayerMovement : MonoBehaviour
 {
