@@ -10,9 +10,11 @@ public class ButtonManager : MonoBehaviour
     [SerializeField] GameObject _dialogueStuff;
 
     [SerializeField] PlayerMovement _enableMovement;
+
+    [SerializeField] Phone_Receiver _phoneReceiverPickedUp;
     void Start()
     {
-        
+        _phoneReceiverPickedUp = GameObject.Find("Receiver").GetComponent<Phone_Receiver>();
     }
 
     // Update is called once per frame
@@ -23,7 +25,7 @@ public class ButtonManager : MonoBehaviour
 
     public void addNumber(int numberPressed)
     {
-        if (!_pressSpecificButton)
+        if (!_pressSpecificButton && _phoneReceiverPickedUp._pickedUp == true)
         {
             //if (//get length of character < 10)
             //{
