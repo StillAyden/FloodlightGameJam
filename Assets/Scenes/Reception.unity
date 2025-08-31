@@ -3826,6 +3826,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1072597019}
+  - component: {fileID: 1072597020}
   m_Layer: 0
   m_Name: ScreenUI
   m_TagString: Untagged
@@ -3848,6 +3849,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 256692849}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1072597020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072597018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93cfe15351a1e854497026d0b0ffc35a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pnlLogin: {fileID: 0}
+  pnlDesktop: {fileID: 0}
+  pnlEmail: {fileID: 0}
+  emailTab: {fileID: 0}
+  pnlInbox: {fileID: 0}
+  pnlSent: {fileID: 0}
+  pnlBin: {fileID: 0}
+  WelcomeEmailRecieved: {fileID: 0}
+  BossEmailRecieved: {fileID: 0}
+  EmailSent: {fileID: 0}
+  username: {fileID: 0}
+  password: {fileID: 0}
+  pnlEmailForwardPrompt: {fileID: 0}
+  EmailForwardConfirmed: {fileID: 0}
+  EmailForwardDenied: {fileID: 0}
+  AddressToForward: {fileID: 0}
 --- !u!1 &1087060256
 GameObject:
   m_ObjectHideFlags: 0
