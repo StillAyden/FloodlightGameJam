@@ -3,7 +3,42 @@ guid: b0b310591dd37654fb118e68657fbe0a
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ceiling
+    second: {fileID: 2100000, guid: 524664e8340e7f2478a637eb5a17f326, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skirting_01
+    second: {fileID: 2100000, guid: 06555bc7784699a4792d57616f5263d4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skirting_02
+    second: {fileID: 2100000, guid: 0563bc956b49544429329d9e1bed7d45, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall_01
+    second: {fileID: 2100000, guid: 4fa5750a36c4399458f6008e3a644b8d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall_02
+    second: {fileID: 2100000, guid: b440ef14bb5b96741a67f7cd4ef9ea62, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall_03
+    second: {fileID: 2100000, guid: 232f872784607e2409eb57ac85fabda2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall_04
+    second: {fileID: 2100000, guid: af1b9116811330d4394477eed9a87dc2, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
