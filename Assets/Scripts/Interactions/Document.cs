@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class Document : MonoBehaviour, IInteractable
@@ -10,6 +11,12 @@ public class Document : MonoBehaviour, IInteractable
 
     [Header("Handling Child Interactions")]
     [SerializeField] GameObject _documentSign;
+    [SerializeField] Animator documentAnimator;
+
+    [Header("Document Text Added")]
+    [SerializeField] TMP_Text _headerText;
+    [SerializeField] TMP_Text _bodyText;
+
     private void OnEnable()
     {
         _interacted = false;
@@ -30,6 +37,8 @@ public class Document : MonoBehaviour, IInteractable
         //what happens when the player interacts with phone
         if (_interacted == false)
         {
+            _headerText.text = _documentSign.GetComponent<SignHere>().HeaderTitle[0];
+            _bodyText.text = _documentSign.GetComponent<SignHere>().bodyText[0];
             _switchInteractions._playerMainCamera.transform.SetParent(this.transform);
             _interacted = true;
             this.GetComponent<Collider>().enabled = false;

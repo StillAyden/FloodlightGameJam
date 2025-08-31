@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SignHere : MonoBehaviour, IInteractable
@@ -11,8 +12,11 @@ public class SignHere : MonoBehaviour, IInteractable
 
     [Header("Document Sub Tasks")]
     public List<string> HeaderTitle = new List<string>();
-    [SerializeField] List<string> bodyText = new List<string>();
+    public List<string> bodyText = new List<string>();
     [SerializeField] List<int> taskNumber = new List<int>();
+
+   
+
 
     private void Start()
     {
@@ -29,6 +33,8 @@ public class SignHere : MonoBehaviour, IInteractable
         // send an event to the DayNight Manager to say task is completed
         if (HeaderTitle.Count > 0)
         {
+            
+
             _dayNightManager.taskCompleted(taskNumber[0]);
             HeaderTitle.Remove(HeaderTitle[0]);
             bodyText.Remove(bodyText[0]);
