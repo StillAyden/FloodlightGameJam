@@ -10,9 +10,10 @@ public class Phone_Receiver : MonoBehaviour, IInteractable, IEndDialogie
     [SerializeField] TaskManager _dayNightManager;
     [SerializeField] GoBackIntToChar _goBack;
     public bool _pickedUp = false;
+    [SerializeField] Animator _phoneAnimator;
 
     [Header("Sounds")]
-    [SerializeField] AudioSource AudioSource;
+    public AudioSource AudioSource;
     [SerializeField] AudioClip _audioRinging;
     [SerializeField] AudioClip _audioPickUp;
     [SerializeField] AudioClip _audioPutDown;
@@ -21,7 +22,7 @@ public class Phone_Receiver : MonoBehaviour, IInteractable, IEndDialogie
     [Header("Phone Sub Tasks")]
     //[SerializeField] List<AudioClip> voiceMailClip = new List<AudioClip>();//is this necessary?
     [SerializeField] List<DialogueSequence_SO> voiceMailDialogue = new List<DialogueSequence_SO>();
-    [SerializeField] List<int> taskNumber = new List<int>();
+    public List<int> taskNumber = new List<int>();
 
     private void Start()
     {
@@ -32,6 +33,19 @@ public class Phone_Receiver : MonoBehaviour, IInteractable, IEndDialogie
         _goBack = GameObject.Find("GoBack").GetComponent<GoBackIntToChar>();
 
         //RingPhone();
+    }
+
+    private void Update()
+    {
+        //_receiver.GetComponent<Phone_Receiver>().AudioSource.isPlaying
+        if (taskNumber.Count > 0 && AudioSource.clip != _audioRinging && _pickedUp == false)
+        {
+            _phoneAnimator.SetBool("FlashLight", true);
+        }
+        else
+        {
+            _phoneAnimator.SetBool("FlashLight", false);
+        }
     }
 
     public void SetphoneTasks( DialogueSequence_SO voicemailDialogue, int taskValue) //AudioClip voiceClip,
