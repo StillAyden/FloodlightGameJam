@@ -17,6 +17,7 @@ public class Phone_Receiver : MonoBehaviour, IInteractable, IEndDialogie
     [SerializeField] AudioClip _audioRinging;
     [SerializeField] AudioClip _audioPickUp;
     [SerializeField] AudioClip _audioPutDown;
+    [SerializeField] Animator _phoneRecevierAnimator;
     //private Phone _phoneScript;
 
     [Header("Phone Sub Tasks")]
@@ -46,6 +47,15 @@ public class Phone_Receiver : MonoBehaviour, IInteractable, IEndDialogie
         {
             _phoneAnimator.SetBool("FlashLight", false);
         }
+
+        if (taskNumber.Count == 0 && _pickedUp == true)
+        {
+            if (Mouse.current.rightButton.wasPressedThisFrame) // Right click pressed
+            {
+
+                PutDown();
+            }
+        }
     }
 
     public void SetphoneTasks( DialogueSequence_SO voicemailDialogue, int taskValue) //AudioClip voiceClip,
@@ -68,19 +78,24 @@ public class Phone_Receiver : MonoBehaviour, IInteractable, IEndDialogie
             //voiceMailClip.Remove(voiceMailClip[0]);
             //voiceMailDialogue.Remove(voiceMailDialogue[0]);
             //taskNumber.Remove(taskNumber[0]); 
+             _playerMovement.enabled = false;
+             _goBack.enabled = false;
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
         }
         else
         {
-            this.GetComponent<Collider>().enabled = false;
+            _playerMovement.enabled = true;
+            _goBack.enabled = true;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
             //send an event to the DayNightManager to say task is completed
 
             // Testing Dialogue
             //_dialogueSystem.TriggerDialogueSequence(0, this.gameObject);
-        _playerMovement.enabled = false;
-        _goBack.enabled = false;
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = true;
+       
+        
 
         //temp testing
         if (_pickedUp == false)
@@ -119,12 +134,15 @@ public class Phone_Receiver : MonoBehaviour, IInteractable, IEndDialogie
     {
         AudioSource.clip = _audioPickUp;
         AudioSource.Play();
+        _phoneRecevierAnimator.SetTrigger("PickedUp");
     }
 
     public void PutDown()
     {
         AudioSource.clip = _audioPutDown;
         AudioSource.Play();
+        _phoneRecevierAnimator.SetTrigger("PutDown");
+        _pickedUp = false;
     }
 
     //private void Update()
