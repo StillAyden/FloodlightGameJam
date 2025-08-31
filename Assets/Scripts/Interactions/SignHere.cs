@@ -6,7 +6,7 @@ public class SignHere : MonoBehaviour, IInteractable
 {
     [SerializeField] TaskManager _dayNightManager;
     [SerializeField] Animator documentAnimator;
-    [SerializeField] GameObject _inDocuments;
+    
     [SerializeField] GameObject _outDocuments;
     [SerializeField] Document _documentManager;
 
@@ -39,6 +39,7 @@ public class SignHere : MonoBehaviour, IInteractable
         if (HeaderTitle.Count == 1)
         {
             this.enabled = false;
+            _outDocuments.SetActive(false);
         }
 
         Debug.Log(transform.name);
@@ -52,10 +53,6 @@ public class SignHere : MonoBehaviour, IInteractable
             HeaderTitle.Remove(HeaderTitle[0]);
             bodyText.Remove(bodyText[0]);
             taskNumber.Remove(taskNumber[0]);
-        }
-        else
-        {
-            _outDocuments.SetActive(false);
         }
 
             _audioSource.clip = _audioClipDocument;
