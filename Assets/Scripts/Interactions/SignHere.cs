@@ -5,6 +5,10 @@ using UnityEngine;
 public class SignHere : MonoBehaviour, IInteractable
 {
     [SerializeField] TaskManager _dayNightManager;
+    [SerializeField] Animator documentAnimator;
+    [SerializeField] GameObject _inDocuments;
+    [SerializeField] GameObject _outDocuments;
+    [SerializeField] Document _documentManager;
 
     [Header("Sounds")]
     [SerializeField] AudioSource _audioSource;
@@ -21,7 +25,15 @@ public class SignHere : MonoBehaviour, IInteractable
     private void Start()
     {
         _dayNightManager = GameObject.Find("Task Manager").GetComponent<TaskManager>();
+        _documentManager = GameObject.Find("Document_collider").GetComponent<Document>();
+        _outDocuments.SetActive(false);
     }
+
+    public void Update()
+    {
+        
+    }
+
     public void interact()
     {
         if (HeaderTitle.Count == 1)
@@ -33,16 +45,23 @@ public class SignHere : MonoBehaviour, IInteractable
         // send an event to the DayNight Manager to say task is completed
         if (HeaderTitle.Count > 0)
         {
-            
 
+            _outDocuments.SetActive(true);
+            _documentManager.enabled = true;
             _dayNightManager.taskCompleted(taskNumber[0]);
             HeaderTitle.Remove(HeaderTitle[0]);
             bodyText.Remove(bodyText[0]);
             taskNumber.Remove(taskNumber[0]);
         }
+        else
+        {
+            _outDocuments.SetActive(false);
+        }
 
-        _audioSource.clip = _audioClipDocument;
+            _audioSource.clip = _audioClipDocument;
         _audioSource.Play();
+        //documentAnimator.SetTrigger("BringDocument");
+        documentAnimator.SetTrigger("SendDocument");
         //Have the player sign the document
         //an animation of signing is happening
         //document goes away and you are shifted back to the character

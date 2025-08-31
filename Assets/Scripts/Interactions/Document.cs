@@ -12,31 +12,73 @@ public class Document : MonoBehaviour, IInteractable
     [Header("Handling Child Interactions")]
     [SerializeField] GameObject _documentSign;
     [SerializeField] Animator documentAnimator;
+    [SerializeField] GameObject _inDocuments;
 
     [Header("Document Text Added")]
     [SerializeField] TMP_Text _headerText;
     [SerializeField] TMP_Text _bodyText;
 
-    private void OnEnable()
-    {
-        _interacted = false;
-        this.GetComponent<Collider>().enabled = true;
-        _documentSign = GameObject.Find("SignHere");
-        _documentSign.GetComponent<Collider>().enabled = false;
-    }
+    //private void OnEnable()
+    //{
+    //    if (_documentSign.GetComponent<SignHere>().HeaderTitle.Count > 0 && _documentSign.GetComponent<SignHere>().HeaderTitle != null)
+    //    {
+    //        _interacted = false;
+    //        _switchInteractions = GameObject.Find("ManagerSwitchInteractions").GetComponent<ManagerSwitchInteractions>();
+    //        _documentSign = GameObject.Find("SignHere");
+    //        _documentSign.GetComponent<Collider>().enabled = false;
+    //        this.GetComponent<Collider>().enabled = false;
+    //        this.enabled = true;
+    //    }
+    //    else
+    //    {
+    //        _interacted = false;
+    //        _switchInteractions = GameObject.Find("ManagerSwitchInteractions").GetComponent<ManagerSwitchInteractions>();
+    //        _documentSign = GameObject.Find("SignHere");
+    //        _documentSign.GetComponent<Collider>().enabled = false;
+    //        this.GetComponent<Collider>().enabled = false;
+    //        this.enabled = false;
+    //    }
+
+
+    //}
     private void Start()
     {
         _switchInteractions = GameObject.Find("ManagerSwitchInteractions").GetComponent<ManagerSwitchInteractions>();
         _documentSign = GameObject.Find("SignHere");
         _documentSign.GetComponent<Collider>().enabled = false;
-        this.GetComponent<Collider>().enabled = false;
-        this.enabled = false;
+        //this.GetComponent<Collider>().enabled = false;
+        //this.enabled = false;
+    }
+
+    private void Update()
+    {
+        if (_documentSign.GetComponent<SignHere>().HeaderTitle.Count > 0 && _documentSign.GetComponent<SignHere>().HeaderTitle != null)
+        {
+            _interacted = false;
+            _switchInteractions = GameObject.Find("ManagerSwitchInteractions").GetComponent<ManagerSwitchInteractions>();
+            _documentSign = GameObject.Find("SignHere");
+            _documentSign.GetComponent<Collider>().enabled = false;
+            this.GetComponent<Collider>().enabled = true;
+            //this.enabled = true;
+            _inDocuments.SetActive(true);
+        }
+        else
+        {
+            _interacted = false;
+            _switchInteractions = GameObject.Find("ManagerSwitchInteractions").GetComponent<ManagerSwitchInteractions>();
+            _documentSign = GameObject.Find("SignHere");
+            _documentSign.GetComponent<Collider>().enabled = false;
+            this.GetComponent<Collider>().enabled = false;
+            //this.enabled = false;
+            _inDocuments.SetActive(false);
+        }
     }
     public void interact()
     {
         //what happens when the player interacts with phone
         if (_interacted == false)
         {
+            documentAnimator.SetTrigger("BringDocument");
             _headerText.text = _documentSign.GetComponent<SignHere>().HeaderTitle[0];
             _bodyText.text = _documentSign.GetComponent<SignHere>().bodyText[0];
             _switchInteractions._playerMainCamera.transform.SetParent(this.transform);

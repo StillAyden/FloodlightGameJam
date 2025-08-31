@@ -37,6 +37,7 @@ public class TaskManager: MonoBehaviour
 
     void Start()
     {
+        _fadeInOut.SetTrigger("Fade");
         phoneManager = GameObject.Find("Receiver").GetComponent<Phone_Receiver>();
         documentManager = GameObject.Find("SignHere").GetComponent<SignHere>();
 
