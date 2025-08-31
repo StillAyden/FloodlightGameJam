@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using static UnityEditor.Experimental.GraphView.GraphView;
 using static UnityEngine.GraphicsBuffer;
 
@@ -17,12 +18,13 @@ public class Phone : MonoBehaviour, IInteractable
     [SerializeField] GameObject _receiver;
     [SerializeField] GameObject _buttons;
 
-    
 
     private void Start()
     {
         _switchInteractions = GameObject.Find("ManagerSwitchInteractions").GetComponent<ManagerSwitchInteractions>();
     }
+
+    
     private void OnEnable()
     {
         _interacted = false;
