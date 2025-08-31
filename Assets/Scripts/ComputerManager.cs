@@ -21,6 +21,8 @@ public class ComputerManager : MonoBehaviour
     [SerializeField] GameObject WelcomeEmailRecieved;
     [SerializeField] GameObject BossEmailRecieved;
     [Space]
+    [SerializeField] GameObject EmailSent;
+    [Space]
     //Login
     [SerializeField] InputField username;
     [SerializeField] InputField password;
@@ -29,6 +31,7 @@ public class ComputerManager : MonoBehaviour
     [SerializeField] GameObject pnlEmailForwardPrompt;
     [SerializeField] GameObject EmailForwardConfirmed;
     [SerializeField] GameObject EmailForwardDenied;
+    [SerializeField] InputField AddressToForward; 
     public void LoginToComputer()
     {
         if (username.text == "GREENHOLDINGS" && password.text == "LOV3TH3LAND")
@@ -100,23 +103,62 @@ public class ComputerManager : MonoBehaviour
     //Emails Recieved
     public void ShowWelcomeEmail()
     {
+        WelcomeEmailRecieved.SetActive(true);
+        BossEmailRecieved.SetActive(false);
+    }
+
+    public void HideAnyEmail()
+    {
+        WelcomeEmailRecieved.SetActive(false);
+        BossEmailRecieved.SetActive(false);
+        EmailSent.SetActive(false);
 
     }
 
     public void ShowBossEmail()
     {
-
+        WelcomeEmailRecieved.SetActive(false);
+        BossEmailRecieved.SetActive(true);
     }
 
     //Emails Sent
 
     public void ShowTiagoSilvaEmail()
     {
+        WelcomeEmailRecieved.SetActive(false);
+        BossEmailRecieved.SetActive(false);
 
+        EmailSent.SetActive(true);
     }
 
     public void ShowForwardEmailPrompt()
     {
+        HideAnyEmail();
+        pnlEmailForwardPrompt.SetActive(true);
+    }
 
+    public void CheckValidEmail()
+    {
+        if (AddressToForward.text == "tiagosilva@thatmail.com") 
+        {
+            EmailForwardConfirmed.SetActive(true);
+            EmailForwardDenied.SetActive(false);
+
+            pnlEmailForwardPrompt.SetActive(false);
+        }
+        else
+        {
+            EmailForwardConfirmed.SetActive(false);
+            EmailForwardDenied.SetActive(true);
+
+            pnlEmailForwardPrompt.SetActive(false);
+        }
+    }
+
+    public void HideForwardRelatedWindows()
+    {
+        pnlEmailForwardPrompt.SetActive(false);
+        EmailForwardConfirmed.SetActive(false);
+        EmailForwardDenied.SetActive(false);
     }
 }
