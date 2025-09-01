@@ -19,5 +19,5 @@ MonoBehaviour:
     headerOrTitle: 
     text: 
     clip: {fileID: 0}
-    subDialogues: {fileID: 0}
-    completed: 0
+    subDialogues: {fileID: 11400000, guid: 930efe206d37da9488aa95ebddcffaca, type: 2}
+    completed: 1

@@ -10,9 +10,9 @@ public class Screen : MonoBehaviour, IInteractable
     [Header("Screen UI")]
     [SerializeField] ComputerManager _screen;
     [Header("Sounds")]
-    [SerializeField] AudioSource _audioSourceComputer;
+  
     [SerializeField] AudioSource _audioSourceMail;
-    [SerializeField] AudioClip _audioIdling;
+
     [SerializeField] AudioClip _audioReceiveMail;
 
 
@@ -23,8 +23,7 @@ public class Screen : MonoBehaviour, IInteractable
     [SerializeField] List<int> taskNumber = new List<int>();
     public void Start()
     {
-        _audioSourceComputer.clip = _audioIdling;
-        _audioSourceComputer.Play();
+
         _playerMovement = GameObject.Find("Main Camera").GetComponent<PlayerMovement>();
         _goBack = GameObject.Find("GoBack").GetComponent<GoBackIntToChar>();
         _screen = GameObject.Find("canvComputerScreen").GetComponent<ComputerManager>();
@@ -38,7 +37,7 @@ public class Screen : MonoBehaviour, IInteractable
         //_goBack.enabled = false;
         //Cursor.lockState = CursorLockMode.Confined;
         //Cursor.visible = true;
-
+        this.GetComponent<Collider>().enabled = true;
         //Have the player click on the screen to access the menus
 
 

@@ -205,9 +205,12 @@ public class TaskManager: MonoBehaviour
                 //check until this task is completed to unlock
                 //after the button dial_01 to call technician 
                 //computer unlocks
-                if (_actsOrChapters[2].tasks[0].completed == true)//Based on Narrative Script
+                if (_actsOrChapters[2].tasks[0].completed == true && _unlockComputer.enabled == false)//Based on Narrative Script
                 {
-                    _unlockComputer.enabled = true;
+                    
+                        _unlockComputer.enabled = true;
+                        _unlockComputer.GetComponent<Collider>().enabled = true;
+
                 }
                 
                 //sends an email
