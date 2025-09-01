@@ -44,13 +44,22 @@ public class ButtonManager : MonoBehaviour, IEndDialogie
             currentPhoneNumber = currentPhoneNumber + numberPressed;
             if (currentPhoneNumber == _setNumber[0])
             {
-                
-                _dialogueSystem.TriggerDialogueSequence(_setDialogue[0], this.gameObject);//,voiceMailClip[0]
-                _playerMovement.enabled = false;
-                _goBack.enabled = false;
-                Cursor.lockState = CursorLockMode.Confined;
-                Cursor.visible = true;
-                //gat canvas and start Dialogie Manager
+                //if it cotains # set it to null
+
+                if (currentPhoneNumber == _setNumber[0])
+                {
+                    _dialogueSystem.TriggerDialogueSequence(_setDialogue[0], this.gameObject);//,voiceMailClip[0]
+                    _playerMovement.enabled = false;
+                    _goBack.enabled = false;
+                    Cursor.lockState = CursorLockMode.Confined;
+                    Cursor.visible = true;
+                    //gat canvas and start Dialogie Manager
+                }
+                else
+                {
+                    currentPhoneNumber = null;
+                }
+
             }
 
         }

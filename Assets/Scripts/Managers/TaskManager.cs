@@ -23,6 +23,7 @@ public class TaskManager: MonoBehaviour
     [SerializeField] private Phone_Receiver phoneManager;
     [SerializeField] private SignHere documentManager;
     [SerializeField] private ButtonManager buttonManager;
+    [SerializeField] private Screen screenManager;
 
     [Header("Sus Task/s")]
     [SerializeField] List<int> _susTasksValue = new List<int>();
@@ -42,6 +43,7 @@ public class TaskManager: MonoBehaviour
         phoneManager = GameObject.Find("Receiver").GetComponent<Phone_Receiver>();
         documentManager = GameObject.Find("SignHere").GetComponent<SignHere>();
         buttonManager = GameObject.Find("Buttons").GetComponent<ButtonManager>();
+        screenManager = GameObject.Find("Screen").GetComponent<Screen>();
 
         getNumberOfDays = _actsOrChapters.Length;
         currentDay = 0;
@@ -97,6 +99,7 @@ public class TaskManager: MonoBehaviour
                     if (task.taskType == TaskType.Sub)
                     {
                         //phoneManager.SetphoneTasks(task.subDialogues, i);//task.clip,
+                        screenManager.SetemailTasks(task.headerOrTitle, task.text, i);
                     }
                     else
                     {
@@ -146,6 +149,8 @@ public class TaskManager: MonoBehaviour
 
                     //send the current i to relevant script this will help for completing tasks
                     break;
+
+               
             }/////////
         }
     }
@@ -272,6 +277,15 @@ public class TaskManager: MonoBehaviour
                         //send HeaderOrTitle for Number
                         //sendDialogue for...you know dialogue
                         buttonManager.SetDialTasks(susTask.headerOrTitle, susTask.subDialogues, taskIndex);
+                        break;
+
+
+                    case InteractionType.ReadEmail:
+                        //documentManager.SetdocumentTasks(susTask.headerOrTitle, susTask.text, taskIndex);
+                        //send to Button Manager
+                        //send HeaderOrTitle for Number
+                        //sendDialogue for...you know dialogue
+                        screenManager.SetemailTasks(susTask.headerOrTitle, susTask.text, taskIndex);
                         break;
 
                         // add more cases here if you have more interaction types

@@ -30,8 +30,8 @@ MonoBehaviour:
     completed: 0
   - taskType: 0
     interactionType: 1
-    headerOrTitle: 
-    text: 
+    headerOrTitle: Blaah blah
+    text: Blah blah
     clip: {fileID: 0}
     subDialogues: {fileID: 0}
     completed: 0

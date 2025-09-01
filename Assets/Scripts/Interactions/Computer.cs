@@ -15,13 +15,11 @@ public class Computer : MonoBehaviour, IInteractable
     {
         _interacted = false;
         this.GetComponent<Collider>().enabled = true;
-        _screen = GameObject.Find("Screen");
         _screen.GetComponent<Collider>().enabled = false;
     }
     private void Start()
     {
         _switchInteractions = GameObject.Find("ManagerSwitchInteractions").GetComponent<ManagerSwitchInteractions>();
-        _screen = GameObject.Find("Screen");
         _screen.GetComponent<Collider>().enabled = false;
         this.GetComponent<Collider>().enabled = false;
         this.enabled = false;
