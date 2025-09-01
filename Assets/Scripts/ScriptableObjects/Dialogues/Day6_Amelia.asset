@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7218b0975c52c646a3bd2b6917112e0, type: 3}
+  m_Name: Day6_Amelia
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - name: AMELIA
+    text: Hey there! You must be new.
+    clip: {fileID: 8300000, guid: fc94422a1e82dea43808afd84ddb5858, type: 3}
+  - name: AMELIA
+    text: "I\u2019m Amelia, the friendly neighbourhood accountant. "
+    clip: {fileID: 8300000, guid: 8baae1a913392c841bdd9e036effb9c5, type: 3}
+  - name: AMELIA
+    text: "It\u2019s good to have someone behind that desk again, especially after
+      the last one left so unexpectedly\u2026 weird."
+    clip: {fileID: 8300000, guid: 93406115dfb50794a8032f004c74f879, type: 3}
+  - name: AMELIA
+    text: "Anyway, I\u2019ll see you around. Shout if you ever need anything!\r"
+    clip: {fileID: 8300000, guid: 6b04c2386cbe7424b8fb3d54f9bc9341, type: 3}
