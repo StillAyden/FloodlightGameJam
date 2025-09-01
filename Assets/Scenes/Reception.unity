@@ -4813,7 +4813,7 @@ MonoBehaviour:
   _audioRinging: {fileID: 8300000, guid: 18b097330ab1d8f43ab2130c6916a058, type: 3}
   _audioPickUp: {fileID: 8300000, guid: 0740cfe483a3a8c4ab6d7c5ce94afb6e, type: 3}
   _audioPutDown: {fileID: 8300000, guid: 178f6a0a8b1462f418847b8bea03eae2, type: 3}
-  _phoneRecevierAnimator: {fileID: 1743382409}
+  _phoneRecevierAnimator: {fileID: 979786386}
   voiceMailDialogue: []
   taskNumber: 
 --- !u!82 &1397923714

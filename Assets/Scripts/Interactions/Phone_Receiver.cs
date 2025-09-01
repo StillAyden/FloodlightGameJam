@@ -52,7 +52,7 @@ public class Phone_Receiver : MonoBehaviour, IInteractable, IEndDialogie
         {
             if (Mouse.current.rightButton.wasPressedThisFrame) // Right click pressed
             {
-
+                _pickedUp = false;
                 PutDown();
             }
         }
