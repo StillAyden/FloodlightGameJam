@@ -35,7 +35,7 @@ public enum InteractionType
     Dial
 }
 
-[CreateAssetMenu(fileName = "Task_Which Act?", menuName = "Game/Task Set")] 
+[CreateAssetMenu(fileName = "Task_Which_Act_", menuName = "Task Set")] 
 public class TaskSet : ScriptableObject
 {
     [Header("Tasks")]

@@ -1803,11 +1803,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ab57c8026428e44b76410fff49cc90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actsOrChapters:
-  - {fileID: 11400000, guid: 1d20bad6f992cb348af85723edd2ef82, type: 2}
-  - {fileID: 11400000, guid: 65350a130aad0c54b94fa45a041e9c25, type: 2}
-  - {fileID: 11400000, guid: d4b1b07c262e3ab48bb430b843650c81, type: 2}
-  - {fileID: 11400000, guid: c6b2588225e31b14686a9766d43b2f70, type: 2}
+  _actsOrChapters: []
   getNumberOfDays: 0
   currentDay: 0
   tasksCompleted: 0
@@ -6658,7 +6654,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227123828}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7a43e97616741a4787689e134c80121, type: 3}
   m_Name: 

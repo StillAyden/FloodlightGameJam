@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 
 public class TaskManager: MonoBehaviour
 {
-    [SerializeField] TaskSet[] _actsOrChapters;
+    [SerializeField] List<TaskSet> _actsOrChapters = new List<TaskSet>();
     [SerializeField] int getNumberOfDays;
     [SerializeField] int currentDay;
     [SerializeField] bool tasksCompleted = false;
@@ -39,13 +39,35 @@ public class TaskManager: MonoBehaviour
 
     void Start()
     {
+        //finding it in resources folder and addint to ActsOrChapters
+        UnityEngine.Object[] allObjs = Resources.LoadAll("ScriptableObjects/Tasks");
+        Debug.Log("Objects found: " + allObjs.Length);
+
+        foreach (var obj in allObjs)
+        {
+            TaskSet ts = obj as TaskSet; // safe cast
+            if (ts != null)
+            {
+                _actsOrChapters.Add(ts);
+                Debug.Log("Added TaskSet: " + ts.name + " with " + ts.tasks.Count + " tasks");
+            }
+            else
+            {
+                Debug.LogWarning("Object is not a TaskSet: " + obj.name);
+            }
+        }
+
+        Debug.Log("Total Acts/Chapters added: " + _actsOrChapters.Count);
+
+
+
         _fadeInOut.SetTrigger("Fade");
         phoneManager = GameObject.Find("Receiver").GetComponent<Phone_Receiver>();
         documentManager = GameObject.Find("SignHere").GetComponent<SignHere>();
         buttonManager = GameObject.Find("Buttons").GetComponent<ButtonManager>();
         screenManager = GameObject.Find("Screen").GetComponent<Screen>();
 
-        getNumberOfDays = _actsOrChapters.Length;
+        getNumberOfDays = _actsOrChapters.Count;
         currentDay = 0;
         getNumberOfTasks = _actsOrChapters[currentDay].numberOfTasks;
         //taskCompleted();
