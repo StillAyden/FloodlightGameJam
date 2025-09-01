@@ -55,7 +55,7 @@ public class SignHere : MonoBehaviour, IInteractable
             taskNumber.Remove(taskNumber[0]);
         }
 
-            _audioSource.clip = _audioClipDocument;
+        _audioSource.clip = _audioClipDocument;
         _audioSource.Play();
         //documentAnimator.SetTrigger("BringDocument");
         documentAnimator.SetTrigger("SendDocument");

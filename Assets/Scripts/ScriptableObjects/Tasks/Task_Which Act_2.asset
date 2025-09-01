@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Task_Which Act_2
   m_EditorClassIdentifier: Assembly-CSharp::TaskSet
-  numberOfTasks: 2
+  numberOfTasks: 3
   tasks:
   - taskType: 1
     interactionType: 2
@@ -20,6 +20,23 @@ MonoBehaviour:
     text: 
     clip: {fileID: 0}
     subDialogues: {fileID: 11400000, guid: 6c855c6a1d1e8984c9260d56cdd6bb7a, type: 2}
+    completed: 0
+  - taskType: 0
+    interactionType: 0
+    headerOrTitle: "Land Use Authorization Agreement (Confidential \u2013 Internal
+      Distribution Only)"
+    text: 'This document confirms your acknowledgment and consent regarding the transfer
+      of rights, access, and responsibilities associated with designated parcels
+      of undeveloped land, as outlined in Annex 7B.  By signing below, you agree
+      to:  Waive any claims to prior ownership, occupation, or dispute.  Refrain
+      from disclosing the details of this agreement to any external parties, including
+      local authorities, community representatives, or press.  Recognize that the
+      overseeing entity reserves the right to make adjustments to boundaries, usage,
+      and duration without further notice.  Please note that by affixing your signature,
+      you acknowledge full compliance and absolve the overseeing entity of any liability,
+      regardless of circumstances, damages, or third-party claims.'
+    clip: {fileID: 0}
+    subDialogues: {fileID: 0}
     completed: 0
   - taskType: 0
     interactionType: 2

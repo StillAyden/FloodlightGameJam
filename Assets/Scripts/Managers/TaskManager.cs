@@ -47,7 +47,7 @@ public class TaskManager: MonoBehaviour
         //taskCompleted();
       
         _unlockPhone.enabled = true;
-        getTasks();
+        //getTasks();
     }
 
     private void Update()
@@ -55,6 +55,7 @@ public class TaskManager: MonoBehaviour
         //checkSubPhoneTasks();
         //checkSubDocumentTasks();
         CheckAllSubTasks();
+        checkToUnlock();
     }
     public void getTasks()
     {
