@@ -58,6 +58,7 @@ public class TaskManager: MonoBehaviour
     }
     public void getTasks()
     {
+        getNumberOfTasks = _actsOrChapters[currentDay].numberOfTasks;
         for (int i = 0; i < getNumberOfTasks; i++)
         {
             var task = _actsOrChapters[currentDay].tasks[i];
@@ -425,7 +426,7 @@ public class TaskManager: MonoBehaviour
         {
             //maybe a dialogue that appears on the screen to say end of the day perhaps?
             _fadeInOut.SetTrigger("Fade");
-            
+            tasksCompleted = false;
             //fadeToBlack
             //show text that says Day: 31 etc
             //fadeIn
@@ -440,7 +441,7 @@ public class TaskManager: MonoBehaviour
     {
         _gobacktoChar.exitInteraction();
         //nextDay();
-        //getTasks();
+        getTasks();
 
     }
 }
