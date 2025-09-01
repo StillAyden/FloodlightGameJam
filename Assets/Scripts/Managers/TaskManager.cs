@@ -22,6 +22,7 @@ public class TaskManager: MonoBehaviour
     [Header("Send Tasks")]
     [SerializeField] private Phone_Receiver phoneManager;
     [SerializeField] private SignHere documentManager;
+    [SerializeField] private ButtonManager buttonManager;
 
     [Header("Sus Task/s")]
     [SerializeField] List<int> _susTasksValue = new List<int>();
@@ -40,6 +41,7 @@ public class TaskManager: MonoBehaviour
         _fadeInOut.SetTrigger("Fade");
         phoneManager = GameObject.Find("Receiver").GetComponent<Phone_Receiver>();
         documentManager = GameObject.Find("SignHere").GetComponent<SignHere>();
+        buttonManager = GameObject.Find("Buttons").GetComponent<ButtonManager>();
 
         getNumberOfDays = _actsOrChapters.Length;
         currentDay = 0;
@@ -122,6 +124,25 @@ public class TaskManager: MonoBehaviour
 
                     //testing
                     Debug.Log("Task Number: " + i + " Dialogue: " + task.subDialogues.name);
+
+                    //send the current i to relevant script this will help for completing tasks
+                    break;
+
+                case InteractionType.Dial:
+                    //Debug.Log("Make Phone Ring, Dialog: " + task.subDialogues);
+                    // TODO: add the clip, dialogue and taskValue to make a voice mail
+                    if (task.taskType == TaskType.Sub)
+                    {
+                        buttonManager.SetDialTasks(task.headerOrTitle, task.subDialogues, i);//task.clip,
+                    }
+                    else
+                    {
+                        Debug.Log("It is a Sus task");
+                        _susTasksValue.Add(i);
+                    }
+
+                    //testing
+                    Debug.Log("Task Number: " + i + " Dialogue: " + task.subDialogues.name + "Number: "+ task.headerOrTitle);
 
                     //send the current i to relevant script this will help for completing tasks
                     break;
@@ -243,6 +264,14 @@ public class TaskManager: MonoBehaviour
 
                     case InteractionType.Document:
                         documentManager.SetdocumentTasks(susTask.headerOrTitle, susTask.text, taskIndex);
+                        break;
+
+                    case InteractionType.Dial:
+                        //documentManager.SetdocumentTasks(susTask.headerOrTitle, susTask.text, taskIndex);
+                        //send to Button Manager
+                        //send HeaderOrTitle for Number
+                        //sendDialogue for...you know dialogue
+                        buttonManager.SetDialTasks(susTask.headerOrTitle, susTask.subDialogues, taskIndex);
                         break;
 
                         // add more cases here if you have more interaction types

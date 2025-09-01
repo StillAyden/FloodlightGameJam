@@ -12,14 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Task_Which Act_3
   m_EditorClassIdentifier: Assembly-CSharp::TaskSet
-  numberOfTasks: 3
+  numberOfTasks: 4
   tasks:
   - taskType: 1
     interactionType: 2
     headerOrTitle: 
     text: 
     clip: {fileID: 0}
-    subDialogues: {fileID: 0}
+    subDialogues: {fileID: 11400000, guid: 9ee361412553b9349bb9b7458e4390c0, type: 2}
+    completed: 0
+  - taskType: 0
+    interactionType: 3
+    headerOrTitle: 00741258336
+    text: 
+    clip: {fileID: 0}
+    subDialogues: {fileID: 11400000, guid: bbb7d242f6642f04a817104e180f63a1, type: 2}
     completed: 0
   - taskType: 0
     interactionType: 1
@@ -33,5 +40,5 @@ MonoBehaviour:
     headerOrTitle: 
     text: 
     clip: {fileID: 0}
-    subDialogues: {fileID: 0}
+    subDialogues: {fileID: 11400000, guid: 72b577dfc54644447a581de6247d21f3, type: 2}
     completed: 0

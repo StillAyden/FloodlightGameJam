@@ -33,7 +33,8 @@ public enum InteractionType
 {
     Document,
     ReadEmail,
-    RingPhone
+    RingPhone,
+    Dial
 }
 
 [CreateAssetMenu(fileName = "Task_Which Act?", menuName = "Game/Task Set")] 

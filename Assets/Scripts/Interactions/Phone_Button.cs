@@ -30,7 +30,7 @@ public class Phone_Button : MonoBehaviour, IInteractable
         AudioSource.Play();
         switch (transform.name)
         {
-            case "Button_0":
+            case "Button_00":
                 Debug.Log("Button_0 pressed!");
                 _buttonManager.addNumber(0);
                 break;

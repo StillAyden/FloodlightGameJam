@@ -46,7 +46,7 @@ public class Document : MonoBehaviour, IInteractable
     {
         _switchInteractions = GameObject.Find("ManagerSwitchInteractions").GetComponent<ManagerSwitchInteractions>();
         _documentSign = GameObject.Find("SignHere");
-        _wholeDocument = GameObject.Find("Document_Animation");
+        //_wholeDocument = GameObject.Find("Document_Animation");
         //_documentSign.GetComponent<Collider>().enabled = false;
         this.GetComponent<Collider>().enabled = false;
         this.enabled = false;
@@ -92,15 +92,15 @@ public class Document : MonoBehaviour, IInteractable
             _documentSign.gameObject.SetActive(true);
             _documentSign.GetComponent<Collider>().enabled = true;
 
-            if (_documentSign.GetComponent<SignHere>().HeaderTitle.Count > 1)
-            {
-                _documentSign.GetComponent<Collider>().enabled = true;
-                _documentSign.gameObject.SetActive(true);
-            }
-            else
-            {
-                _documentSign.gameObject.SetActive(false);
-            }
+            //if (_documentSign.GetComponent<SignHere>().HeaderTitle.Count > 1)
+            //{
+            //    _documentSign.GetComponent<Collider>().enabled = true;
+            //    _documentSign.gameObject.SetActive(true);
+            //}
+            //else
+            //{
+            //    _documentSign.gameObject.SetActive(false);
+            //}
 
 
             Debug.Log("Document is Interacted");

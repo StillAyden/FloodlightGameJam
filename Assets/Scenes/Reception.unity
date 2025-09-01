@@ -278,8 +278,14 @@ MonoBehaviour:
   _pressSpecificButtonIndex: 0
   currentPhoneNumber: 
   _dialogueStuff: {fileID: 706499083}
-  _enableMovement: {fileID: 1442510228}
+  _playerMovement: {fileID: 0}
+  _goBack: {fileID: 0}
   _phoneReceiverPickedUp: {fileID: 0}
+  _taskManager: {fileID: 0}
+  _dialogueSystem: {fileID: 0}
+  _setNumber: []
+  _setDialogue: []
+  taskNumber: 
 --- !u!1 &72922043
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,7 +406,7 @@ Transform:
   m_GameObject: {fileID: 72922043}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5977199, y: 1.007, z: -2.2792697}
+  m_LocalPosition: {x: 1.5977199, y: 1.007, z: -2.416}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1472,6 +1478,7 @@ MonoBehaviour:
   _fadeInOut: {fileID: 824792614}
   phoneManager: {fileID: 0}
   documentManager: {fileID: 0}
+  buttonManager: {fileID: 0}
   _susTasksValue: 
   _unlockComputer: {fileID: 72922044}
   _unlockPhone: {fileID: 1227123833}
@@ -2478,7 +2485,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 706499083}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -3121,7 +3128,31 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 'This document confirms your acknowledgment and consent regarding the transfer
+    of rights, access, and responsibilities associated with designated parcels of
+    undeveloped land, as outlined in Annex 7B.
+
+
+    By signing below, you agree
+    to:
+
+
+    Waive any claims to prior ownership, occupation, or dispute.
+
+
+    Refrain
+    from disclosing the details of this agreement to any external parties, including
+    local authorities, community representatives, or press.
+
+
+    Recognize that
+    the overseeing entity reserves the right to make adjustments to boundaries, usage,
+    and duration without further notice.
+
+
+    Please note that by affixing your
+    signature, you acknowledge full compliance and absolve the overseeing entity
+    of any liability, regardless of circumstances, damages, or third-party claims.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3130,8 +3161,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3148,15 +3179,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 5
+  m_fontSize: 2.25
   m_fontSizeBase: 5
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 0
+  m_fontSizeMax: 36
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -4211,7 +4242,7 @@ Transform:
   m_GameObject: {fileID: 1227123828}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.25091136, z: -0, w: 0.96801007}
-  m_LocalPosition: {x: 2.06672, y: 0.8973999, z: -2.39927}
+  m_LocalPosition: {x: 2.147, y: 0.8973999, z: -2.53}
   m_LocalScale: {x: 0.30704, y: 0.106060825, z: 0.30704}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4571,7 +4602,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: "Land Use Authorization Agreement\n(Confidential \u2013 Internal Distribution
+    Only)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4580,8 +4612,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4598,12 +4630,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 10.8
+  m_fontSize: 4.15
   m_fontSizeBase: 10.8
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 0
+  m_fontSizeMax: 36
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -4806,7 +4838,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dialogueSystem: {fileID: 0}
   _playerMovement: {fileID: 0}
-  _dayNightManager: {fileID: 0}
+  _taskManager: {fileID: 0}
   _goBack: {fileID: 0}
   _pickedUp: 0
   _phoneAnimator: {fileID: 1743382409}
@@ -5217,7 +5249,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f747f567cd15b854c9a52992cd0967ce,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.245
+      value: -0.324
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f747f567cd15b854c9a52992cd0967ce,
         type: 3}
@@ -5227,7 +5259,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f747f567cd15b854c9a52992cd0967ce,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.247
+      value: 0.189
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f747f567cd15b854c9a52992cd0967ce,
         type: 3}

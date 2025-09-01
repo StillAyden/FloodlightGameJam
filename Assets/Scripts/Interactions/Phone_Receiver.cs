@@ -7,7 +7,7 @@ public class Phone_Receiver : MonoBehaviour, IInteractable, IEndDialogie
 {
     [SerializeField] DialogueSystem _dialogueSystem;
     [SerializeField] PlayerMovement _playerMovement;
-    [SerializeField] TaskManager _dayNightManager;
+    [SerializeField] TaskManager _taskManager;
     [SerializeField] GoBackIntToChar _goBack;
     public bool _pickedUp = false;
     [SerializeField] Animator _phoneAnimator;
@@ -28,7 +28,7 @@ public class Phone_Receiver : MonoBehaviour, IInteractable, IEndDialogie
     private void Start()
     {
         //_phoneScript = GameObject.Find("Phone_collider").GetComponent<Phone>();
-        _dayNightManager = GameObject.Find("Task Manager").GetComponent<TaskManager>();
+        _taskManager = GameObject.Find("Task Manager").GetComponent<TaskManager>();
         _dialogueSystem = GameObject.Find("DialogueManager").GetComponent<DialogueSystem>();
         _playerMovement = GameObject.Find("Main Camera").GetComponent<PlayerMovement>();
         _goBack = GameObject.Find("GoBack").GetComponent<GoBackIntToChar>();
@@ -119,7 +119,7 @@ public class Phone_Receiver : MonoBehaviour, IInteractable, IEndDialogie
         Cursor.visible = false;
         PutDown();
         _pickedUp = false;
-        _dayNightManager.taskCompleted(taskNumber[0]);
+        _taskManager.taskCompleted(taskNumber[0]);
         voiceMailDialogue.Remove(voiceMailDialogue[0]);
         taskNumber.Remove(taskNumber[0]);
     }

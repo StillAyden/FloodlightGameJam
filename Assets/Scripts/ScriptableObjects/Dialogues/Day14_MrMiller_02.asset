@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7218b0975c52c646a3bd2b6917112e0, type: 3}
+  m_Name: Day14_MrMiller_02
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - name: MR MILLER
+    text: "I\u2019m sure you\u2019re well accustomed to your new piece of hardware.
+      When you\u2019re ready, check the email I sent you."
+    clip: {fileID: 8300000, guid: 76665e5ed1c2ee7448c99747ebc7ebb8, type: 3}
+  - name: MR MILLER
+    text: "I need to send that over to a \u201CTiago Silva\u201D. His email address
+      should be in my journal.\r"
+    clip: {fileID: 8300000, guid: 231f1b50db8db824184459869133a8ef, type: 3}

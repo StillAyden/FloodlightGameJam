@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7218b0975c52c646a3bd2b6917112e0, type: 3}
+  m_Name: Day14_Armelia
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - name: AMELIA
+    text: "Hey! You\u2019re probably calling about your new computer."
+    clip: {fileID: 8300000, guid: d343ba01a9f00474aadd8d3fe6595a97, type: 3}
+  - name: AMELIA
+    text: "It\u2019s one of the latest specs and it\u2019s got so many new features."
+    clip: {fileID: 8300000, guid: 2fef727f9628f9e44bd49fc58bf45c02, type: 3}
+  - name: AMELIA
+    text: "It\u2019s a shame you\u2019re only using it to check emails.\r"
+    clip: {fileID: 8300000, guid: eaf6d539de6555346a65dabae8f92de3, type: 3}
+  - name: AMELIA
+    text: ...
+    clip: {fileID: 8300000, guid: 7187b884fa77d9a44bb0a531d63ddf42, type: 3}
+  - name: AMELIA
+    text: "Anyway\u2026 you can find the password and instructions in the diary on
+      your desk."
+    clip: {fileID: 8300000, guid: 241a881056a166d4db3cea720fa17414, type: 3}
