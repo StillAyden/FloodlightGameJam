@@ -17,7 +17,7 @@ public class SignHere : MonoBehaviour, IInteractable
     [Header("Document Sub Tasks")]
     public List<string> HeaderTitle = new List<string>();
     public List<string> bodyText = new List<string>();
-    [SerializeField] List<int> taskNumber = new List<int>();
+    public List<int> taskNumber = new List<int>();
 
    
 
@@ -48,11 +48,12 @@ public class SignHere : MonoBehaviour, IInteractable
         {
 
             _outDocuments.SetActive(true);
-            _documentManager.enabled = true;
+            //_documentManager.enabled = true;
             _dayNightManager.taskCompleted(taskNumber[0]);
             HeaderTitle.Remove(HeaderTitle[0]);
             bodyText.Remove(bodyText[0]);
             taskNumber.Remove(taskNumber[0]);
+            this.enabled = false;
         }
 
         _audioSource.clip = _audioClipDocument;

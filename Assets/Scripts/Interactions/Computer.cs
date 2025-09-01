@@ -30,7 +30,7 @@ public class Computer : MonoBehaviour, IInteractable
 
 
             _switchInteractions = GameObject.Find("ManagerSwitchInteractions").GetComponent<ManagerSwitchInteractions>();
-            //_screen.GetComponent<Collider>().enabled = true;
+            _screen.GetComponent<Collider>().enabled = true;
             this.GetComponent<Collider>().enabled = true;
             //this.enabled = true;
             //_screen.SetActive(true);

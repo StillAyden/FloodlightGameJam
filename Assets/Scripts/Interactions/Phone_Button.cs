@@ -13,7 +13,7 @@ public class Phone_Button : MonoBehaviour, IInteractable
 
     private void Start()
     {
-        _buttonManager = GameObject.Find("Buttons").GetComponent<ButtonManager>();
+        _buttonManager = GameObject.Find("ButtonManager").GetComponent<ButtonManager>();
     }
 
     //private void Update()

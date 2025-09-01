@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Task_Which Act_4
+  m_Name: TaskSet_Act4
   m_EditorClassIdentifier: Assembly-CSharp::TaskSet
-  numberOfTasks: 1
   tasks:
   - taskType: 0
     interactionType: 2

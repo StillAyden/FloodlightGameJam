@@ -54,25 +54,25 @@ public class Document : MonoBehaviour, IInteractable
 
     private void Update()
     {
-        if (_documentSign.GetComponent<SignHere>().HeaderTitle.Count > 0 && _documentSign.GetComponent<SignHere>().HeaderTitle != null)
+        if (_documentSign.GetComponent<SignHere>().taskNumber.Count > 0 && _documentSign.GetComponent<SignHere>().taskNumber != null)
         {
-            _interacted = false;
+            //_interacted = false;
             _switchInteractions = GameObject.Find("ManagerSwitchInteractions").GetComponent<ManagerSwitchInteractions>();
             _documentSign = GameObject.Find("SignHere");
             _documentSign.GetComponent<Collider>().enabled = true;
             //_wholeDocument.gameObject.SetActive(true);
-            this.GetComponent<Collider>().enabled = true;
+            //this.GetComponent<Collider>().enabled = true;
             //this.enabled = true;
             _inDocuments.SetActive(true);
         }
         else
         {
-            _interacted = false;
+            //_interacted = false;
             _switchInteractions = GameObject.Find("ManagerSwitchInteractions").GetComponent<ManagerSwitchInteractions>();
             _documentSign = GameObject.Find("SignHere");
             _documentSign.GetComponent<Collider>().enabled = false;
             //_wholeDocument.gameObject.SetActive(false);
-            this.GetComponent<Collider>().enabled = false;
+            //this.GetComponent<Collider>().enabled = false;
             //this.enabled = false;
             _inDocuments.SetActive(false);
         }
@@ -89,8 +89,9 @@ public class Document : MonoBehaviour, IInteractable
             _interacted = true;
             this.GetComponent<Collider>().enabled = false;
             _switchInteractions.characterToInteraction(_interactivePosition, _interactiveRotation);
-            _documentSign.gameObject.SetActive(true);
+            //_documentSign.gameObject.SetActive(true);
             _documentSign.GetComponent<Collider>().enabled = true;
+            _documentSign.GetComponent<SignHere>().enabled = true;
 
             //if (_documentSign.GetComponent<SignHere>().HeaderTitle.Count > 1)
             //{
@@ -104,7 +105,7 @@ public class Document : MonoBehaviour, IInteractable
 
 
             Debug.Log("Document is Interacted");
-            this.enabled = false;
+            //this.enabled = false;
         }
        
     }

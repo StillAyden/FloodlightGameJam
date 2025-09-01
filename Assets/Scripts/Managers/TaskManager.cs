@@ -32,6 +32,8 @@ public class TaskManager: MonoBehaviour
     [SerializeField] Computer _unlockComputer;
     [SerializeField] Phone _unlockPhone;
     [SerializeField] Document _unlockDocument;
+    private bool unlockDocument = false;
+    private bool unlockDComputer = false;
     //get reference canInteract on whatever interactive scripts
     //turn to true once a specifc task is activated
 
@@ -39,6 +41,13 @@ public class TaskManager: MonoBehaviour
 
     void Start()
     {
+        phoneManager = GameObject.Find("Receiver").GetComponent<Phone_Receiver>();
+        documentManager = GameObject.Find("SignHere").GetComponent<SignHere>();
+        //Debug.Log("Found: " +GameObject.Find("ButtonManager").GetComponent<ButtonManager>());
+        //Debug.Log("Found: " + GameObject.Find("ScreenManager").GetComponent<Screen>());
+        buttonManager = GameObject.Find("ButtonManager").GetComponent<ButtonManager>();
+        screenManager = GameObject.Find("ScreenManager").GetComponent<Screen>();
+
         //finding it in resources folder and addint to ActsOrChapters
         UnityEngine.Object[] allObjs = Resources.LoadAll("ScriptableObjects/Tasks");
         Debug.Log("Objects found: " + allObjs.Length);
@@ -61,20 +70,17 @@ public class TaskManager: MonoBehaviour
 
 
 
-        _fadeInOut.SetTrigger("Fade");
-        phoneManager = GameObject.Find("Receiver").GetComponent<Phone_Receiver>();
-        documentManager = GameObject.Find("SignHere").GetComponent<SignHere>();
-        buttonManager = GameObject.Find("Buttons").GetComponent<ButtonManager>();
-        screenManager = GameObject.Find("Screen").GetComponent<Screen>();
+       
+        
 
         getNumberOfDays = _actsOrChapters.Count;
         currentDay = 0;
-        getNumberOfTasks = _actsOrChapters[currentDay].numberOfTasks;
+        getNumberOfTasks = _actsOrChapters[currentDay].NumberOfTasks;
         //taskCompleted();
       
         _unlockPhone.enabled = true;
         //getTasks();
-
+        _fadeInOut.SetTrigger("Fade");
         //SceneManager.LoadSceneAsync("Level1", LoadSceneMode.Additive);
     }
 
@@ -87,7 +93,7 @@ public class TaskManager: MonoBehaviour
     }
     public void getTasks()
     {
-        getNumberOfTasks = _actsOrChapters[currentDay].numberOfTasks;
+        getNumberOfTasks = _actsOrChapters[currentDay].NumberOfTasks;
         for (int i = 0; i < getNumberOfTasks; i++)
         {
             var task = _actsOrChapters[currentDay].tasks[i];
@@ -223,16 +229,22 @@ public class TaskManager: MonoBehaviour
                 break;
             case 1:
                 //check until this task is completed to unlock
-                _unlockDocument.enabled = true;
+                if (unlockDocument == false)
+                {
+                    unlockDocument = true;
+                    _unlockDocument.GetComponent<Collider>().enabled = true;
+                }
+                
                 break;
             case 2:
                 //check until this task is completed to unlock
                 //after the button dial_01 to call technician 
                 //computer unlocks
-                if (_actsOrChapters[2].tasks[0].completed == true && _unlockComputer.enabled == false)//Based on Narrative Script
+                if (_actsOrChapters[2].tasks[0].completed == true && unlockDComputer == false)//Based on Narrative Script
                 {
-                    
-                        _unlockComputer.enabled = true;
+
+                    //_unlockComputer.enabled = true;
+                    unlockDComputer = true;
                         _unlockComputer.GetComponent<Collider>().enabled = true;
 
                 }

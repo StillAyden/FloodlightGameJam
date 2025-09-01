@@ -7,18 +7,22 @@ public struct TaskData
 {
     public TaskType taskType;
     public InteractionType interactionType;
-    [Tooltip("use this only for Display Purposes")]
-    [TextArea(1, 2)] public string headerOrTitle; //use this only for Display Purposes
-    [Tooltip("use this only for Display Purposes")]
-    [TextArea(5, 10)] public string text; //use this only for Display Purposes
 
-    [Tooltip("use this only for Audio purposes")]
-    public AudioClip clip; //use this only for Audio purposes
-    [Tooltip("use this only for Audio purposes")]
-    public DialogueSequence_SO subDialogues; //use this only for Audio purposes
+    [Tooltip("Display only")]
+    [TextArea(1, 2)] public string headerOrTitle;
+
+    [Tooltip("Display only")]
+    [TextArea(5, 10)] public string text;
+
+    [Tooltip("Audio only")]
+    public AudioClip clip;
+
+    [Tooltip("Audio only")]
+    public DialogueSequence_SO subDialogues;
 
     public bool completed;
 }
+
 
 public enum TaskType
 {
@@ -35,16 +39,18 @@ public enum InteractionType
     Dial
 }
 
-[CreateAssetMenu(fileName = "Task_Which_Act_", menuName = "Task Set")] 
+[CreateAssetMenu(fileName = "TaskSet_", menuName = "Game/Task Set")]
 public class TaskSet : ScriptableObject
 {
     [Header("Tasks")]
-    public int numberOfTasks;
     public List<TaskData> tasks = new List<TaskData>();
 
+    public int NumberOfTasks => tasks.Count;
+
     private void OnValidate()
-    {
-        // Keep numberOfTasks in sync with list count
-        numberOfTasks = tasks.Count;
+    { // Sync inspector display
+#if UNITY_EDITOR
+        UnityEditor.EditorUtility.SetDirty(this);
+#endif
     }
 }

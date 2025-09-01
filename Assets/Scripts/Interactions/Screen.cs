@@ -37,7 +37,7 @@ public class Screen : MonoBehaviour, IInteractable
         //_goBack.enabled = false;
         //Cursor.lockState = CursorLockMode.Confined;
         //Cursor.visible = true;
-        this.GetComponent<Collider>().enabled = true;
+        this.GetComponent<Collider>().enabled = false;
         //Have the player click on the screen to access the menus
 
 

@@ -25,9 +25,9 @@ public class Phone : MonoBehaviour, IInteractable
     {
         _interacted = false;
         this.GetComponent<Collider>().enabled = true;
-        _buttons = GameObject.Find("Buttons");
+        _buttons = GameObject.Find("ButtonManager");
         _receiver = GameObject.Find("Receiver");
-        _buttons.SetActive(false);
+        //_buttons.GetComponent<Collider>().enabled = false;
         _receiver.GetComponent<Collider>().enabled = false;
     }
     
