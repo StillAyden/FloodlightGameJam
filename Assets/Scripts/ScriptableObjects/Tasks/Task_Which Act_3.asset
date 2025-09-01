@@ -20,25 +20,25 @@ MonoBehaviour:
     text: 
     clip: {fileID: 0}
     subDialogues: {fileID: 11400000, guid: 9ee361412553b9349bb9b7458e4390c0, type: 2}
-    completed: 1
+    completed: 0
   - taskType: 0
     interactionType: 3
-    headerOrTitle: 0
+    headerOrTitle: 0123456789
     text: 
     clip: {fileID: 0}
     subDialogues: {fileID: 11400000, guid: bbb7d242f6642f04a817104e180f63a1, type: 2}
-    completed: 1
+    completed: 0
   - taskType: 0
     interactionType: 1
-    headerOrTitle: Blaah blah
-    text: Blah blah
+    headerOrTitle: Blah
+    text: Blah
     clip: {fileID: 0}
     subDialogues: {fileID: 0}
-    completed: 1
+    completed: 0
   - taskType: 0
     interactionType: 2
     headerOrTitle: 
     text: 
     clip: {fileID: 0}
     subDialogues: {fileID: 11400000, guid: 72b577dfc54644447a581de6247d21f3, type: 2}
-    completed: 1
+    completed: 0

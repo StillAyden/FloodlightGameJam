@@ -1,10 +1,6 @@
-using NUnit.Framework;
-using System.Collections.Generic;
-using TMPro;
+
 using UnityEngine;
-using UnityEngine.Audio;
-using static UnityEditor.Experimental.GraphView.GraphView;
-using static UnityEngine.GraphicsBuffer;
+
 
 public class Phone : MonoBehaviour, IInteractable
 {

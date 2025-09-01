@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Range(0f, 90f)] float _clampRight;
     float _rotationX = 0f;
     float _rotationY = 0f;
+    [SerializeField] Collider _colliderRayCastReplacer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     void LateUpdate()
     {
         getMouseMovement();
-        useRacast();
+        //useRacast();
     }
 
     public void getMouseMovement()
@@ -46,32 +47,50 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+
+    [SerializeField] private LayerMask interactableLayer;
     public void useRacast()
     {
         //use Raycast to hit an interactable gameObject
         Debug.DrawRay(transform.position, transform.forward * 5f, Color.red);
-        // Get current mouse position
-        Vector2 mousePos = Mouse.current.position.ReadValue();
+        //// Get current mouse position
+        //Vector2 mousePos = Mouse.current.position.ReadValue();
 
-        // Create ray from camera to that position
-        Ray ray = Camera.main.ScreenPointToRay(mousePos);
+        //// Create ray from camera to that position
+        //Ray ray = Camera.main.ScreenPointToRay(mousePos);
 
-        // Declare a RaycastHit variable to store hit information
-        RaycastHit hit;
+        //// Declare a RaycastHit variable to store hit information
+        //RaycastHit hit;
+
+        //if (Keyboard.current.eKey.wasPressedThisFrame)
+        //{
+        //    Debug.Log("E key pressed!");
+
+        //    // Perform the raycast
+        //    if (Physics.Raycast(ray, out hit, 100f, ~0))
+        //    {
+        //        // If the raycast hits something, 'hit' now contains the collision data
+        //        Debug.Log("Hit " + hit.collider.name + " at point " + hit.point);
+
+        //        // You can then access various properties of the hit object
+        //        // Example: Change the color of the hit object
+        //        hit.collider.GetComponent<IInteractable>()?.interact();
+        //    }
+        //}
 
         if (Keyboard.current.eKey.wasPressedThisFrame)
         {
             Debug.Log("E key pressed!");
 
-            // Perform the raycast
-            if (Physics.Raycast(ray, out hit))
+            Ray ray = new Ray(_cameraFPS.position, _cameraFPS.forward);
+            if (Physics.Raycast(ray, out RaycastHit hit, 100f))
             {
-                // If the raycast hits something, 'hit' now contains the collision data
-                Debug.Log("Hit " + hit.collider.name + " at point " + hit.point);
-
-                // You can then access various properties of the hit object
-                // Example: Change the color of the hit object
+                Debug.Log("HIT: " + hit.collider.name + " on layer " + LayerMask.LayerToName(hit.collider.gameObject.layer));
                 hit.collider.GetComponent<IInteractable>()?.interact();
+            }
+            else
+            {
+                Debug.Log("NO HIT detected");
             }
         }
 

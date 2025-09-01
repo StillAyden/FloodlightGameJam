@@ -52,6 +52,8 @@ public class TaskManager: MonoBehaviour
       
         _unlockPhone.enabled = true;
         //getTasks();
+
+        //SceneManager.LoadSceneAsync("Level1", LoadSceneMode.Additive);
     }
 
     private void Update()
