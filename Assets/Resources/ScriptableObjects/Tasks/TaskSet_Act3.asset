@@ -26,14 +26,14 @@ MonoBehaviour:
     text: 
     clip: {fileID: 0}
     subDialogues: {fileID: 11400000, guid: bbb7d242f6642f04a817104e180f63a1, type: 2}
-    completed: 1
+    completed: 0
   - taskType: 0
     interactionType: 1
     headerOrTitle: Blah
     text: Blah
     clip: {fileID: 0}
     subDialogues: {fileID: 11400000, guid: bbb7d242f6642f04a817104e180f63a1, type: 2}
-    completed: 1
+    completed: 0
   - taskType: 0
     interactionType: 2
     headerOrTitle: 

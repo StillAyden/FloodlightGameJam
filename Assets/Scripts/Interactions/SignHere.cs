@@ -9,6 +9,7 @@ public class SignHere : MonoBehaviour, IInteractable
     
     [SerializeField] GameObject _outDocuments;
     [SerializeField] Document _documentManager;
+    [SerializeField] GoBackIntToChar _goBackIntToChar;
 
     [Header("Sounds")]
     [SerializeField] AudioSource _audioSource;
@@ -27,6 +28,7 @@ public class SignHere : MonoBehaviour, IInteractable
         _dayNightManager = GameObject.Find("Task Manager").GetComponent<TaskManager>();
         _documentManager = GameObject.Find("Document_collider").GetComponent<Document>();
         _outDocuments.SetActive(false);
+        _goBackIntToChar = GameObject.Find("GoBack").GetComponent<GoBackIntToChar>();
     }
 
     public void Update()
@@ -53,6 +55,7 @@ public class SignHere : MonoBehaviour, IInteractable
             HeaderTitle.Remove(HeaderTitle[0]);
             bodyText.Remove(bodyText[0]);
             taskNumber.Remove(taskNumber[0]);
+            _goBackIntToChar.enabled = true;
             this.enabled = false;
         }
 

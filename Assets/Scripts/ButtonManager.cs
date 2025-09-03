@@ -41,26 +41,31 @@ public class ButtonManager : MonoBehaviour, IEndDialogie
     {
         if (!_pressSpecificButton && _phoneReceiverPickedUp._pickedUp == true)
         {
-            currentPhoneNumber = currentPhoneNumber + numberPressed;
-            if (currentPhoneNumber == _setNumber[0])
+           
+            if (_setNumber != null && _setNumber.Count > 0 && _setNumber[0] != null)
             {
-                //if it cotains # set it to null
-
+                currentPhoneNumber = currentPhoneNumber + numberPressed;
                 if (currentPhoneNumber == _setNumber[0])
                 {
-                    _dialogueSystem.TriggerDialogueSequence(_setDialogue[0], this.gameObject);//,voiceMailClip[0]
-                    _playerMovement.enabled = false;
-                    _goBack.enabled = false;
-                    Cursor.lockState = CursorLockMode.Confined;
-                    Cursor.visible = true;
-                    //gat canvas and start Dialogie Manager
-                }
-                else
-                {
-                    currentPhoneNumber = null;
+                    //if it cotains # set it to null
+
+                    if (currentPhoneNumber == _setNumber[0])
+                    {
+                        _dialogueSystem.TriggerDialogueSequence(_setDialogue[0], this.gameObject);//,voiceMailClip[0]
+                        _playerMovement.enabled = false;
+                        _goBack.enabled = false;
+                        Cursor.lockState = CursorLockMode.Confined;
+                        Cursor.visible = true;
+                        //gat canvas and start Dialogie Manager
+                    }
                 }
 
+                if (currentPhoneNumber.Length > 10 && currentPhoneNumber != _setNumber[0])
+                {
+                    clearNumber();
+                }
             }
+            
 
         }
         else
@@ -80,6 +85,11 @@ public class ButtonManager : MonoBehaviour, IEndDialogie
         }
     }
 
+
+    public void clearNumber()
+    {
+        currentPhoneNumber = null;
+    }
     public void endDialogue()
     {
         _phoneReceiverPickedUp.PutDown();

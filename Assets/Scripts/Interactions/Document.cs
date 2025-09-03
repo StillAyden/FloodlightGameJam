@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Document : MonoBehaviour, IInteractable
@@ -8,6 +9,7 @@ public class Document : MonoBehaviour, IInteractable
     [SerializeField] Vector3 _interactivePosition;
     [SerializeField] Quaternion _interactiveRotation;
     private bool _interacted = false;
+    [SerializeField] GoBackIntToChar _goBackIntToChar;
 
     [Header("Handling Child Interactions")]
     [SerializeField] GameObject _documentSign;
@@ -46,6 +48,7 @@ public class Document : MonoBehaviour, IInteractable
     {
         _switchInteractions = GameObject.Find("ManagerSwitchInteractions").GetComponent<ManagerSwitchInteractions>();
         _documentSign = GameObject.Find("SignHere");
+        _goBackIntToChar = GameObject.Find("GoBack").GetComponent<GoBackIntToChar>();
         //_wholeDocument = GameObject.Find("Document_Animation");
         //_documentSign.GetComponent<Collider>().enabled = false;
         this.GetComponent<Collider>().enabled = false;
@@ -92,7 +95,7 @@ public class Document : MonoBehaviour, IInteractable
             //_documentSign.gameObject.SetActive(true);
             _documentSign.GetComponent<Collider>().enabled = true;
             _documentSign.GetComponent<SignHere>().enabled = true;
-
+            _goBackIntToChar.enabled = false;
             //if (_documentSign.GetComponent<SignHere>().HeaderTitle.Count > 1)
             //{
             //    _documentSign.GetComponent<Collider>().enabled = true;

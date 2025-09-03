@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Screen : MonoBehaviour, IInteractable
 {
@@ -7,6 +8,7 @@ public class Screen : MonoBehaviour, IInteractable
     [SerializeField] PlayerMovement _playerMovement;
     [SerializeField] GoBackIntToChar _goBack;
     [SerializeField] TaskManager _taskManager;
+    [SerializeField] Computer _computer;
     [Header("Screen UI")]
     [SerializeField] ComputerManager _screen;
     [Header("Sounds")]
@@ -28,7 +30,21 @@ public class Screen : MonoBehaviour, IInteractable
         _goBack = GameObject.Find("GoBack").GetComponent<GoBackIntToChar>();
         _screen = GameObject.Find("canvComputerScreen").GetComponent<ComputerManager>();
         _taskManager = GameObject.Find("Task Manager").GetComponent<TaskManager>();
+        _computer = GameObject.Find("Computer_collider").GetComponent<Computer>();
         //ReceiveMail();
+    }
+
+    private void Update()
+    {
+        if (taskNumber.Count == 0 )
+        {
+            if (Mouse.current.rightButton.wasPressedThisFrame) // Right click pressed
+            {
+                this.GetComponent<Collider>().enabled = false;
+                _computer.GetComponent<Collider>().enabled = true;
+                _computer._interacted = false;
+            }
+        }
     }
     public void interact()
     {
@@ -39,13 +55,14 @@ public class Screen : MonoBehaviour, IInteractable
         //Cursor.visible = true;
         this.GetComponent<Collider>().enabled = false;
         //Have the player click on the screen to access the menus
-
-
+        _computer.GetComponent<Collider>().enabled = true;
+        
         // send an event to the DayNight Manager to say task is completed
         _taskManager.taskCompleted(taskNumber[0]);
         HeaderTitle.Remove(HeaderTitle[0]);
         bodyText.Remove(bodyText[0]);
         taskNumber.Remove(taskNumber[0]);
+        //_computer._interacted = false;
         //_screen.TurnComputerOn();
 
     }
